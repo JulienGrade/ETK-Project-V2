@@ -1,0 +1,49 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Création d'un événement dans le planning{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5">Créer un événement dans le planning</h1>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-light">
+                    <h2>Informations générales</h2>
+                    <hr />
+                    {{ form_row(form.title) }}
+                    {{ form_row(form.category) }}
+                    {{ form_row(form.startDate) }}
+                    {{ form_row(form.endDate) }}
+                </div>
+                <div class="alert alert-light">
+                    <h2>Détails de l'événement</h2>
+                    <hr />
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.seats) }}
+                    {{ form_row(form.ageMin) }}
+                    {{ form_row(form.ageMax) }}
+                    {{ form_row(form.location) }}
+                </div>
+            </div>
+            <div class="col">
+                <div class="alert alert-light">
+                    <h2>Image de l'événement</h2>
+                    <hr />
+                    {{ form_row(form.picture) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-primary clearfix">
+            <h2 class="alert-heading">Enregistrer mon événement</h2>
+            <p>Vous êtes sur le point de créer votre événement,
+                pas d'inquiétude vous pourrez la modifier à tout instant !</p>
+            <button type="submit" class="btn btn-secondary float-right">
+                <i class="fas fa-check"></i>
+                Créer le nouvel événement</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

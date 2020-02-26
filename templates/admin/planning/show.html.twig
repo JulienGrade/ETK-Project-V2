@@ -1,0 +1,93 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}details de l'événement : {{ event.title }}{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <h5 class="card-title card-title-bold text-muted">Événement : {{ event.title }}</h5>
+
+        <div class="card-body printing-area">
+
+
+            <div class="row gap-y">
+                <div class="col-md-3">
+                    <address>
+                        <strong>EuraTech'Kids</strong><br>
+                        165 Avenue de Bretagne,<br>
+                        59000 Lille<br>
+                        <abbr title="Email">E:</abbr> billing@thetheme.io
+                        <br>
+                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                        <br>
+                    </address>
+                </div>
+                <div class="col-md-3">
+                    <img src="{{ asset('uploads/' ~ event.picture) }}" alt="logo"><br><br>
+                </div>
+            </div>
+
+            <div class="table-responsive-md w-50 mx-auto">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Titre de l'événement :</td>
+                            <td>{{event.title}}</td>
+                        </tr>
+                        <tr>
+                            <td>Catégorie :</td>
+                            <td>{{ event.category }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tranche d'âge :</td>
+                            <td>de {{ event.ageMin }} à {{ event.ageMax }} ans</td>
+                        </tr>
+                        <tr>
+                            <td>Date de début de l'événement :</td>
+                            <td>{{event.startDate | date('d/m/Y')}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date de fin de l'événement :</td>
+                            <td>{{ event.endDate | date('d/m/Y') }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de places :</td>
+                            <td>{{ event.seats }} places</td>
+                        </tr>
+                        <tr>
+                            <td>Lieux :</td>
+                            <td>{{ event.location }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Description</h5>
+                    <p class="text-muted">{{ event.description }}</p>
+                </div>
+
+                <div class="col-md-4 ml-md-auto text-right">
+                    <br>
+                    <span class="bt-1 d-inline-block pt-10 pl-40">
+                  Nombre de réservations
+                  <br>
+                </span>
+                    <br><br>
+                    <p class="fs-30 text-primary">Total: {{event.bookings |length}}</p>
+                    <br>
+                </div>
+            </div>
+
+
+            <hr>
+
+            <div class="text-right">
+                <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Euratech'Kids - Connexion{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/anim.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="limiter">
+
+        <div class="container-login100" style="background-image: url({{ asset('img/bg-01.jpg') }});">
+            <div class="wrap-login100 p-t-30 p-b-50">
+                <span class="login100-form-title p-b-31">
+					<a href="{{ path('homepage') }}"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+				</span>
+				<span class="login100-form-title p-b-41">
+					Connexion
+				</span>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="fantom mx-auto" id="fantom" style="margin-bottom: 10px">
+                            <div class="eyes" id="eyes">
+                                <div class="eye">
+                                    <div class="ball"></div>
+                                </div>
+
+                                <div class="eye">
+                                    <div class="ball"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <form class="login100-form validate-form p-b-33 p-t-5" action="{{ path('account_login') }}" method="post">
+
+                    <div class="wrap-input100 validate-input" data-validate = "E-mail vide !">
+                        <input class="input100" type="email" name="_username" id="email" value="{{ username }}" placeholder="euratech@gmail.com">
+                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="MDP vide !">
+                        <input class="input100" type="password" name="_password" id="password" placeholder="Mot de Passe" onfocus="onFocus()" onblur="onBlur()">
+                        <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                    </div>
+
+                    <div class="wrap-input100 text-center">
+                        <a href="#">
+                            Mot de passe oublié?
+                        </a>
+                    </div>
+
+                    <div class="container-login100-form-btn m-t-32">
+                        <button class="login100-form-btn">
+                            Connexion
+                        </button>
+                    </div>
+                </form>
+                <div class="m-t-16 row justify-content-center">
+                    <a class="badge badge-pill badge-danger" type="button" href="#"><i class="fa fa-google-plus-official" aria-hidden="true"> Google connect</i>
+                    </a>
+                </div>
+                <div class="wrap-input100 text-center" style="border-bottom: none">
+                    <a class="btn-lg btn-warning" href="{{ path('account_register') }}">
+                        Créez un compte !
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/eyeball.js') }}"></script>
+{% endblock %}

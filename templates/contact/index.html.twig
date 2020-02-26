@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mx-0 mt-0 pt-0" id="contact">
+        <div class="row">
+            <div class="col text-center text-white py-5">
+                <h1>
+                    On vous écoute :
+                </h1>
+            </div>
+        </div>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-12">
+                <div id="carouselExampleIndicators" class="carousel" data-interval="false" >
+                    <div class="carousel-inner" role="listbox" style="min-height: 70vh">
+
+                        <div class="carousel-item active">
+                            <div class="card col-md-6 col-12 mx-auto px-0 border-0" style="background-color: RGBA(211,211,211, 0.3)">
+                                <div class="card-body col-8 mx-auto text-center py-auto" style="min-height: 65vh">
+                                   <div class="d-none">
+                                       {{ form_row(form.genre) }}
+                                   </div>
+                                    <h5 class="pb-2 text-warning">Votre demande</h5>
+                                    {{ form_row(form.firstName) }}
+                                    {{ form_row(form.lastName) }}
+                                    {{ form_row(form.phone) }}
+                                    {{ form_row(form.email) }}
+                                    <a href="#carouselExampleIndicators" class="cust_btn mt-4" role="button" data-slide="prev" style="color: white">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card col-md-6 col-12 mx-auto px-0 border-0" style="background-color: RGBA(211,211,211, 0.3)">
+                                <div class="card-body col-8 mx-auto text-center py-auto" style="min-height: 65vh">
+                                    <a href="#carouselExampleIndicators" role="button" data-slide="prev" style="color: orange">
+                                        <i class="fas fa-chevron-circle-left"></i>
+                                    </a>
+                                    {{ form_row(form.comeFrom, { 'label': 'Vous êtes :'}) }}
+                                    {{ form_row(form.town, { 'label':
+                                        'Vous venez de :'}) }}
+                                    {#            {% if form.town == 'Autre' %}#}
+                                    {{ form_row(form.yourTown) }}
+                                    {#            {% endif %}#}
+                                    {{ form_row(form.message) }}
+                                    <button class="btn btn-success mt-3">Envoyer votre message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

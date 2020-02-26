@@ -1,0 +1,154 @@
+
+body {
+    font-family: 'Rubik', sans-serif !important;
+}
+
+#card-programme{
+    background: rgb(0,9,94);
+    background: linear-gradient(90deg, rgba(0,9,94,1) 0%, rgba(0,2,25,1) 100%);
+    min-height: 300px;
+    border-radius: 0px;
+}
+#card-programme-reverse{
+    background: rgb(0,9,94);
+    background: linear-gradient(270deg, rgba(0,9,94,1) 0%, rgba(0,2,25,1) 100%);
+    min-height: 300px;
+    border-radius: 0px;
+}
+.nav-link, .navbar-brand{
+    color: white !important;
+}
+.dropdown-menu{
+    background: rgb(0,9,94) !important;
+    background: linear-gradient(90deg, rgba(0,9,94,1) 0%, rgba(0,2,25,1) 100%) !important;
+}
+.dropdown-item:hover, .nav-link:hover, .navbar-brand:hover{
+    color: #ffb51b !important;
+}
+.dropdown-item:hover{
+    background-color: transparent !important;
+}
+.border-3 {
+    border-width:3px !important;
+}
+
+#card-programme img{
+    max-height: 300px;
+}
+#card-programme-reverse img{
+    max-height: 300px;
+}
+
+.card-body {
+    color: white;
+}
+.carousel .card-body{
+    color: white;
+}
+input, textarea{
+    text-align: center;
+}
+
+
+.cust_btn{
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    width: 130px;
+    color: #FFF;
+    background: rgb(168,59,118);
+    background: linear-gradient(270deg, rgba(168,59,118,1) 0%, rgba(242,4,195,1) 100%);
+    transition: .4s;
+}
+body{
+    background-color: lightgray;
+}
+.cust_btn:hover {
+    text-decoration: none;
+    color: #FFF;
+    width: 160px;
+    font-weight: bolder;
+    background: rgb(168,59,118);
+    background: linear-gradient(270deg, rgba(168,59,118,1) 0%, rgba(242,4,195,1) 100%);
+}
+
+.cust_btn_3{
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    width: 220px;
+    color: #FFF;
+    background: rgb(168,59,118);
+    background: linear-gradient(270deg, rgba(168,59,118,1) 0%, rgba(242,4,195,1) 100%);
+    transition: .4s;
+}
+
+.cust_btn_3:hover {
+    text-decoration: none;
+    color: orange;
+    width: 240px;
+    font-weight: bolder;
+    background: rgb(168,59,118);
+    background: linear-gradient(270deg, rgba(168,59,118,1) 0%, rgba(242,4,195,1) 100%);
+}
+
+
+#navbar, #contact, #school, #events{
+    background: rgb(0,9,94);
+    background: linear-gradient(90deg, rgba(0,9,94,1) 0%, rgba(0,2,25,1) 100%);
+}
+
+
+#bg{
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(210,210,210,1) 100%);
+}
+
+#gallerie .card{
+    border: 0;
+    background-color: transparent;
+}
+
+#card-event{
+    background-color: transparent;
+}
+
+#footer{
+    background: rgb(0,9,94);
+    background: linear-gradient(90deg, rgba(0,9,94,1) 0%, rgba(0,2,25,1) 100%);
+    color: #FFF;
+}
+
+#card-singlepage{
+    background: rgb(0,9,94);
+    background: linear-gradient(90deg, rgba(0,9,94,1) 0%, rgba(0,2,25,1) 100%);
+    border-radius: 0px;
+}
+
+#card-singlepage img{
+    max-width: 300px;
+}
+
+.bgevent{
+    background-image: url('https://unsplash.com/photos/zepnJQycr4U') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+#booking_show{
+    background-image: url("https://unsplash.com/photos/E0AHdsENmDg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav-link, .navbar-brand{
+    color: white !important;
+
+}
+.nav-linkactive{
+    color: #ffb51b;
+    padding: 8px;
+}

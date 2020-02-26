@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'une réservation{% endblock %}
+
+{% form_theme form 'booking/_collection.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Modification de votre réservation n° {{ booking.id }}</h1>
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+        <h2>Enregistrez vos modifications !</h2>
+        <button type="submit" class="btn btn-success">J'enregistre !</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/js/booking.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta lang="fr">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>{% block title %}Euratech-Kids{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+{#        <link rel="stylesheet" href="{{ asset('bundles/fosckeditor/ckeditor.css') }}" />#}
+    {% endblock %}
+</head>
+<body>
+{% include 'partials/header.html.twig' %}
+{% block body %}
+
+
+{% endblock %}
+{% include 'partials/footer.html.twig' %}
+
+
+
+    <script src="{{ asset('js/jquery.min.js') }}"> </script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"> </script>
+    <script src="{{ asset('bundles/fosckeditor/ckeditor.js') }}"> </script>
+    {% block javascripts %}{% endblock %}
+
+</body>
+</html>

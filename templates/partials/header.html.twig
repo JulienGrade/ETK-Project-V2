@@ -1,0 +1,57 @@
+<div class="container-fluid" id="bg" style="padding: 0px">
+    <nav id="navbar" class="navbar navbar-expand-lg">
+        <a class="navbar-brand col-4" href="{{ path('homepage') }}"> <img src="{{ asset('img/logo-kids.png') }}" style="max-height: 45px"> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span style="color: white"><i class="fas fa-bars"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav col-8 justify-content-end align-items-center">
+                <li class="nav-item" style="color: white">
+
+                    <a class="nav-link{% if current_menu is defined and current_menu == 'homepage' %}active{% endif %}" href="{{ path('homepage') }}">Accueil <span class="sr-only">(current)</span></a>
+
+                </li>
+                <li class="nav-item" style="color: white">
+                    <a class="nav-link{% if current_menu is defined and current_menu == 'program' %}active{% endif %}" href="{{ path('programs_index') }}">Programme</a>
+                </li>
+                <li class="nav-item" style="color: white">
+                    <a class="nav-link{% if current_menu is defined and current_menu == 'event' %}active{% endif %}" href="{{ path('events_index') }}">Évènements</a>
+                </li>
+                <li class="nav-item" style="color: white">
+
+                    <a class="nav-link{% if current_menu is defined and current_menu == 'school' %}active{% endif %}" href="{{ path('school_index') }}">Ecoles</a>
+
+                </li>
+                {% if app.user %}
+                <li class="nav-item dropdown" style="color: white">
+                    <a class="nav-link{% if current_menu is defined and current_menu == 'account' %}active{% endif %}" dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mon Compte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('account_index') }}" style="color: white">Utilisateur</a>
+                        <a class="dropdown-item" href="{{ path('account_index') }}#reservations" style="color: white">Réservations</a>
+                        <a class="dropdown-item" href="{{ path('account_logout') }}" style="color: white">Déconnexion</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <a class="dropdown-item" href="{{ path('admin_dashboard') }}" style="color: white">Admin</a>
+                        {% endif %}
+                    </div>
+                </li>
+                {% else %}
+                    <li class="nav-item" style="color: white">
+                        <a class="nav-link" href="{{ path('account_login') }}" style="color: white">Connexion</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% for label, messages in app.flashes %}
+        <div class="container">
+            <div class="alert alert-{{ label }}">
+                {% for message in messages %}
+                    <p>{{ message | raw }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

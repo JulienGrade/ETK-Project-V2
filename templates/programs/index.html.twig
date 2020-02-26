@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+
+{#    <table>#}
+{#        {% for program in programs %}#}
+{#            <tr>#}
+{#                {{ program.id }}#}
+{#                {{ program.title }}#}
+{#                {{ program.slug }}#}
+{#                {{ program.secondTitle }}#}
+{#                {{ program.description }}#}
+{#                {{ program.image }}#}
+{#                {{ program.intro }}#}
+{#                {{ program.limitedAge }}#}
+{#                {{ program.illustration }}#}
+
+{#                <img class="" src="{{ asset('uploads/' ~ program.image) }}" alt="Illustration du programme">#}
+{#                <img class="" src="{{ asset('uploads/' ~ program.illustration) }}" alt="Illustration du programme">#}
+
+{#                <td>#}
+{#                    {% if is_granted('ROLE_ADMIN') %}#}
+{#                    <a href="{{ path('programs_show', {'id': program.id}) }}">Montrer le programme</a>#}
+{#                    <a href="{{ path('programs_edit', {'id': program.id}) }}">Editer le programme</a>#}
+{#                    {% endif %}#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="7">Aucun programme de disponible actuellement !</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+
+
+{% block title %}Programmes{% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        <h1 class="my-3 py-4">Notre pédagogie</h1>
+        <p class="my-3 py-4 mx-auto" style="max-width: 60%;font-size: 18px">Les ateliers coding, robotique et créatif sont l’occasion de faire découvrir aux enfants le champ des possibles du numérique à travers des idées de projets qu’ils souhaitent réaliser en faisant appel à leur imagination. La pédagogie de nos ateliers est axée sur le jeu, la découverte et la création. Nous pensons que l’approche doit être ludique pour développer la curiosité, libérer la créativité et susciter l’intérêt de chaque enfant. L’articulation du programme se compose de plusieurs ateliers qui partent de la découverte de l’univers numérique jusqu’à la réalisation du projet de l’enfant par ses soins.</p>
+    </div>
+    {% for program in programs %}
+    <div class="card py-5 mt-4 border-0" id="card-programme">
+        <div class="row mx-0 py-auto">
+            <div class="col-md-4 my-auto">
+                <img src="{{ asset('uploads/' ~ program.illustration) }}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-4 my-auto">
+                <div class="card-body text-center">
+                    <h3 class="card-title text-warning">{{ program.title }}</h3>
+                    <h4 class="card-text">{{ program.secondTitle }}</h4>
+                    <p class="card-text"><small>{{ program.limitedAge }}ans</small></p>
+                    <h5 class="card-text">{{ program.description|raw }}</h5>
+                    <a href="{{ path('programs_show',{ 'id': program.id }) }}" class="cust_btn">Découvrir</a>
+                </div>
+            </div>
+            <div class="col-md-4 my-auto text-center">
+                <img src="{{ asset('uploads/' ~ program.image) }}" class="card-img pr-lg-5" alt="...">
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    <div id="gallerie" class="container mt-5 text-center">
+        <h2 class="my-4">Venez nous voir !</h2>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall1.png') }}">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall2.png') }}">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall3.png') }}">
+                </div>
+            </div>
+        </div>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall4.png') }}">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall5.png') }}">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall6.png') }}">
+                </div>
+            </div>
+        </div>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall7.png') }}">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall8.png') }}">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img" src="{{ asset('img/gall9.png') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

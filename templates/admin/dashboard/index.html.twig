@@ -1,0 +1,361 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block body %}
+
+    <div class="row justify-content-around mt-5">
+        <div class="col-md-6 col-xl-2">
+            <div class="card card-body rounded bg-pale-danger b-3 border-danger">
+                <div class="flexbox">
+                    <span class="fs-40"><i class="fas fa-book-reader"></i></span>
+                    <span class="fs-40 fw-100">{{ stats.bookings }}</span>
+                </div>
+                <div class="text-right">Réservations à un événement</div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-2">
+            <div class="card card-body rounded bg-pale-warning b-3 border-warning">
+                <div class="flexbox">
+                    <span class="fs-40"><i class="fas fa-book-reader"></i></span>
+                    <span class="fs-40 fw-100">{{ waitList |length }}</span>
+                </div>
+                <div class="text-right">Utilisateurs en liste d'attente</div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-2">
+            <div class="card card-body rounded bg-pale-cyan b-3 border-cyan">
+                <div class="flexbox">
+                    <span class="fs-40"><i class="fas fa-users"></i></span>
+                    <span class="fs-40 fw-100">{{ stats.users }}</span>
+                </div>
+                <div class="text-right">Inscriptions au site</div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-2">
+            <div class="card card-body rounded bg-pale-yellow b-3 border-yellow">
+                <div class="flexbox">
+                    <span class="fs-40"><i class="fas fa-calendar-week"></i></span>
+                    <span class="fs-40 fw-100">{{ stats.events }}</span>
+                </div>
+                <div class="text-right">Événements créés</div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-2">
+            <div class="card card-body rounded bg-pale-success b-3 border-success">
+                <div class="flexbox">
+                    <span class="fs-40"><i class="fas fa-child"></i></span>
+                    <span class="fs-40 fw-100">{{ stats.childrens }}</span>
+                </div>
+                <div class="text-right">Enfants accueillis</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-5 justify-content-around">
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title bg-dark"><strong>Événement(s) du jour</strong></h4>
+
+                    <table class="table">
+                        <thead class="bg-secondary">
+                        <tr>
+                            <th>Titre</th>
+                            <th>Catégorie</th>
+                            <th>Ages</th>
+                            <th>Nombre de places</th>
+                            <th>Date du début</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for nowEvent in nowStats.nowEvents %}
+                            <tr>
+                                <th>{{ nowEvent.title }}</th>
+                                <td>{{ nowEvent.category }}</td>
+                                <td>{{ nowEvent.ageMin }} / {{ nowEvent.ageMax }} ans</td>
+
+                                <td>{{ nowEvent.seats }}</td>
+                                <td>{{ nowEvent.startDate | date('d/m/Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title bg-dark"><strong>Enfants présents ce jour</strong></h4>
+
+                    <table class="table">
+                        <thead class="bg-secondary">
+                        <tr>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Age</th>
+                            <th>Événement</th>
+                            <th>Date début</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for nowChildren in nowStats.nowChildrens %}
+                            <tr>
+                                <th>{{ nowChildren.firstName }}</th>
+                                <td>{{ nowChildren.lastName }}</td>
+                                <td>{{ nowChildren.age }}</td>
+                                <td>{{ nowChildren.title }}</td>
+                                <td>{{ nowChildren.startDate | date('d/m/Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title bg-dark"><strong>Réservations du jour</strong></h4>
+
+                    <table class="table">
+                        <thead class="bg-secondary">
+                        <tr>
+                            <th>Numéro de réservations</th>
+                            <th>Titre l'événement</th>
+                            <th>Date de réservation</th>
+                            <th>Date début</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for nowBooking in nowStats.nowBookings %}
+                            <tr>
+                                <th>{{ nowBooking.id }}</th>
+                                <td>{{ nowBooking.title }}</td>
+                                <td>{{ nowBooking.createdAt | date('d/m/Y') }}</td>
+                                <td>{{ nowBooking.startDate | date('d/m/Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 justify-content-around">
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title bg-dark"><strong>Événements en cours</strong></h4>
+
+                    <table class="table">
+                        <thead class="bg-secondary">
+                        <tr>
+                            <th>Titre</th>
+                            <th>Catégorie</th>
+                            <th>Ages</th>
+                            <th>Nombre de places</th>
+                            <th>Date du début</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for activeEvent in activeStats.activeEvents %}
+                            <tr>
+                                <th>{{ activeEvent.title }}</th>
+                                <td>{{ activeEvent.category }}</td>
+                                <td>{{ activeEvent.ageMin }} / {{ activeEvent.ageMax }} ans</td>
+                                <td>{{ activeEvent.seats }}</td>
+                                <td>{{ activeEvent.startDate | date('d/m/Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title bg-dark"><strong>Enfants à venir</strong></h4>
+
+                    <table class="table">
+                        <thead class="bg-secondary">
+                        <tr>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Age</th>
+                            <th>Événement</th>
+                            <th>Date début</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for activeChildren in activeStats.activeChildrens %}
+                            <tr>
+                                <th>{{ activeChildren.firstName }}</th>
+                                <td>{{ activeChildren.lastName }}</td>
+                                <td>{{ activeChildren.age }}</td>
+                                <td>{{ activeChildren.title }}</td>
+                                <td>{{ activeChildren.startDate | date('d/m/Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title bg-dark"><strong>Réservations en cours</strong></h4>
+
+                    <table class="table">
+                        <thead class="bg-secondary">
+                        <tr>
+                            <th>Numéro de réservations</th>
+                            <th>Titre l'événement</th>
+                            <th>Date de réservation</th>
+                            <th>Date début</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for activeBooking in activeStats.activeBookings %}
+                            <tr>
+                                <th>{{ activeBooking.id }}</th>
+                                <td>{{ activeBooking.title }}</td>
+                                <td>{{ activeBooking.createdAt | date('d/mY') }}</td>
+                                <td>{{ activeBooking.startDate | date('d/m/Y') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row text-center justify-content-around">
+
+        <div class="col-lg-5">
+            <div class="card">
+                <h4 class="card-title bg-dark"><strong>Enfants inscrits</strong> par mois</h4>
+
+                <div class="card-body">
+                    <canvas id="chart-children" width="400" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card">
+                <h4 class="card-title bg-dark"><strong>Nombre de personne </strong> en liste d'attente</h4>
+
+                <div class="card-body">
+                    <canvas id="chart-wait" width="400" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-md-5 col-lg-2">
+            <div class="card">
+                <h4 class="card-title bg-dark"><strong>Lieu de résidence</strong> des participants</h4>
+
+                <div class="card-body">
+                    <canvas class="mx-auto" id="chart-city" width="280" height="280"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-2">
+            <div class="card">
+                <h4 class="card-title bg-dark"><strong>Tranche d'âge</strong> des participants</h4>
+
+                <div class="card-body">
+                    <canvas class="mx-auto" id="chart-age" width="280" height="280"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-2">
+            <div class="card">
+                <h4 class="card-title bg-dark"><strong>Répartition</strong> des participants</h4>
+
+                <div class="card-body">
+                    <canvas class="mx-auto" id="chart-sexe" width="280" height="280"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-2">
+            <div class="card">
+                <h4 class="card-title bg-dark"><strong>Taux de réservations nouveaux</strong> utilisteurs</h4>
+
+                <div class="card-body">
+                    <div class="row">
+
+                    </div>
+                    <canvas class="mx-auto" id="chart-user" width="280" height="280"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-2">
+            <div class="card">
+                <h4 class="card-title bg-dark"><strong>Type d'événement</strong> enfants vs parent/enfants</h4>
+
+                <div class="card-body">
+                    <canvas class="mx-auto" id="chart-event" width="280" height="280"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-right">
+        <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+    </div>
+    {{ dump() }}
+{% endblock %}
+
+
+{% block javascripts %}
+<script>
+    var januaryWait     = {{ monthlyWaitList.januaryWaitList }};
+    var februaryWait    = {{ monthlyWaitList.februaryWaitList }};
+    var marchWait       = {{ monthlyWaitList.marchWaitList }};
+    var aprilWait       = {{ monthlyWaitList.aprilWaitList }};
+    var mayWait         = {{ monthlyWaitList.mayWaitList }};
+    var juneWait        = {{ monthlyWaitList.juneWaitList }};
+    var julyWait        = {{ monthlyWaitList.julyWaitList }};
+    var augustWait      = {{ monthlyWaitList.augustWaitList }};
+    var septemberWait   = {{ monthlyWaitList.septemberWaitList }};
+    var octoberWait     = {{ monthlyWaitList.octoberWaitList }};
+    var novemberWait    = {{ monthlyWaitList.novemberWaitList }};
+    var decemberWait    = {{ monthlyWaitList.decemberWaitList }};
+    var january         = {{ monthlyStats.januaryChildrenCount}};
+    var february        = {{ monthlyStats.februaryChildrenCount }};
+    var march           = {{ monthlyStats.marchChildrenCount }};
+    var april           = {{ monthlyStats.aprilChildrenCount }};
+    var may             = {{ monthlyStats.mayChildrenCount }};
+    var june            = {{ monthlyStats.juneChildrenCount }};
+    var july            = {{ monthlyStats.julyChildrenCount }};
+    var august          = {{ monthlyStats.augustChildrenCount }};
+    var september       = {{ monthlyStats.septemberChildrenCount }};
+    var october         = {{ monthlyStats.octoberChildrenCount }};
+    var november        = {{ monthlyStats.novemberChildrenCount }};
+    var december        = {{ monthlyStats.decemberChildrenCount }};
+    var lille           = {{ cityStats.cityLille.0.count }};
+    var lommes          = {{ cityStats.cityLommes.0.count }};
+    var hellemmes       = {{ cityStats.cityHellemmes.0.count }};
+    var otherCity       = {{ cityStats.cityOther.0.count }};
+    var firstAge        = {{ ageStats.ageFirst.0.count }};
+    var secondAge       = {{ ageStats.ageSecond.0.count }};
+    var thirdAge        = {{ ageStats.ageThird.0.count }};
+    var fourthAge       = {{ ageStats.ageFourth.0.count }};
+    var countBoys       = {{ genderStats.countBoys.0.count }};
+    var countGirls      = {{ genderStats.countGirls.0.count }};
+    var childrenOnly    = {{ eventTypeStats.eventChildrenOnly.0.count }};
+    var childrenAnd     = {{ eventTypeStats.eventChildrenAnd.0.count }};
+    var newUser         = {{ newUser.newUserBooking.0.count }};
+    var oldUser         = {{ newUser.oldUserBooking.0.count }};
+
+</script>
+<script src="{{ asset('/js/admin/Chart.bundle.min.js') }}"> </script>
+<script src="{{ asset('/js/admin/Dashboard.js') }}"> </script>
+{% endblock %}

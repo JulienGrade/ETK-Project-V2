@@ -1,0 +1,58 @@
+@charset "utf-8";
+.fantom
+{
+    background-image : url(../img/body.svg);
+    background-repeat : no-repeat;
+    height: 180px;
+    width: 180px;
+    opacity: 1.0;
+}
+
+/*#password:focus{*/
+/*    opacity: 0;*/
+/*}*/
+
+.eyes
+{
+    position: absolute;
+    /*top: 50%;*/
+    transform: translateY(-50%);
+    /*width: 10%;*/
+    margin-left: 42px;
+    margin-top: 85px;
+    text-align: center;
+}
+
+.eye{
+    width: 35px;
+    height: 35px;
+    background: #f1f2f3;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin:0 3px;
+}
+
+.ball{
+    width: 12px;
+    height: 18px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+
+}
+
+.fadeout{
+    opacity: 0.001;
+    transition: opacity 1000ms;
+}
+
+.fadein{
+    opacity: 1;
+
+    transition: opacity 1000ms;
+}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire à l'événement {{ event.title }}!{% endblock %}
+
+{% form_theme form 'booking/_collection.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid" style="background-image: url({{ asset('img/galaxybg.jpeg') }}); background-size: cover">
+        <div class="row py-5">
+            <div class="col-md-6 offset-md-3 col-12 offset-0 text-center">
+                <div class="card py-5" style="background: rgba(0,0,0,0.5)">
+                    <div class="card-title" style="color: #fec206">
+                        <h1>Réservez pour l'événement : {{ event.title }}</h1>
+                    </div>
+                    <div class="card-body justify-content-center" style="color: white">
+                        {{ form_start(form) }}
+
+                        {{ form_widget(form) }}
+                        <h2>Vous avez terminé !</h2>
+                        <button type="submit" class="btn btn-success">Je m'inscris !</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/js/booking.js') }}"></script>
+{% endblock %}

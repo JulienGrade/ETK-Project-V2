@@ -1,0 +1,20 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Liste des programmes{% endblock %}
+
+{% block body %}
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card text-center ml-5">
+                <h4 class="card-title bg-dark">Liste des programmes</h4>
+                {% for program in programs %}
+                    <div class="media-list media-list-hover">
+                        <div class="media media-single">
+                            <a href="{{ path('programs_show', {'id': program.id}) }}"><span>{{program.title}} / {{ program.secondTitle }} </span></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

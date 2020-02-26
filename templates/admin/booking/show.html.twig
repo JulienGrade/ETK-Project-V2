@@ -1,0 +1,97 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Détails de la réservation : {{ booking.id }}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="card mt-5">
+        <h5 class="card-title card-title-bold text-muted">Réservation numéro {{ booking.id }}</h5>
+
+        <div class="card-body printing-area">
+
+
+            <div class="row gap-y">
+                <div class="col-md-3">
+                    <address>
+                        <img src="css/admin/img/logo-kids.png" alt="logo"><br><br>
+                        <strong>EuraTech'Kids</strong><br>
+                        Learning Disctrict Euratechnologies<br>
+                        165 Avenue de Bretagne,<br>
+                        59000 Lille<br>
+                    </address>
+                </div>
+
+                <div class="col-md-3 ml-md-auto text-md-right">
+                    <h4 class="text-dark">Client :</h4>
+                    <address>
+                        <strong>{{ booking.booker.firstName }} {{ booking.booker.lastName }}</strong><br>
+                        {{ booking.booker.city }}<br>
+                        <abbr title="Email"></abbr> {{ booking.booker.email }}
+                        <br>
+                        <abbr title="Phone"></abbr> {{ booking.booker.phone }}
+                    </address>
+
+                    <br><br>
+                    <span><strong>Date de réservation :</strong> {{ booking.booker.createdAt | date('d/m/Y') }}</span>
+                    <br>
+
+                    <br><br><br><br><br>
+                </div>
+            </div>
+
+            <div class="table-responsive-md">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Nombre d'enfants :</th>
+                        <th>{{ booking.childrens |length }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Commentaire :</td>
+                        <td>{{ booking.comment }}</td>
+                    </tr>
+                    <tr>
+                        <td>Événement :</td>
+                        <td>{{ booking.event.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>Débutant le :</td>
+                        <td>{{ booking.event.startDate | date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Catégorie d'âge :</td>
+                        <td>{{booking.event.ageMin}} à {{ booking.event.ageMax }} ans</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Description de l'événement</h5>
+                    <p class="text-muted">{{ booking.event.description }}</p>
+                </div>
+
+                <div class="col-md-4 ml-md-auto text-right">
+                    <br><br>
+                    <p class="fs-30 text-primary">Nombre de place : {{ booking.childrens |length }}</p>
+                    <br>
+                </div>
+            </div>
+
+
+            <hr>
+
+            <div class="text-right">
+                <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

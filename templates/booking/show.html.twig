@@ -1,0 +1,50 @@
+{% extends'base.html.twig' %}
+{% block title %}Réservation (n°{{ booking.id }}){% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="background-image: url({{ asset('img/galaxybg.jpeg') }}); background-size: cover">
+        <div class="row py-4">
+            {% set event = booking.event %}
+            <div class="col text-center text-warning">
+                <h2>Votre programme</h2>
+                <div class="col">
+                    <p>{{ event.title }} pour enfants de {{ event.ageMin }} à {{ event.ageMax }} ans</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-12 offset-0">
+
+                <div class="card text-center py-3 mb-3" style="background: rgba(0,0,0,0.5)">
+                    <div class="card-title text-white">
+                        <h1>Réservation n°{{ booking.id }}</h1>
+                    </div>
+                    <div class="card-body" style="color: black">
+                        {% if app.request.query.get('withAlert') %}
+                            <div class="alert alert-success">
+                                <h4 class="alert-heading">Bravo !</h4>
+                                <p>
+                                    Votre réservation au programme
+                                    <strong>
+                                        <a href="{{ path('events_show', {'slug': event.slug}) }}">{{ event.title }}</a>
+                                    </strong>
+                                    a bien été pris en compte !
+                                </p>
+                            </div>
+                        {% endif %}
+                        <p style="color: white">Pour les enfants : <br/>
+                            {% for children in booking.childrens %}
+                                nom : {{ children.lastName }} <br/>
+                                prénom : {{ children.firstName }} <br />
+                                age : {{ children.age }}  <br/>
+                                sexe : {{ children.sexe }}  <br/>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

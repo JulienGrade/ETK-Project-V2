@@ -1,0 +1,59 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Gestion listes d'attentes{% endblock %}
+
+{% block body %}
+    <div class="row mt-5">
+        <div class="col-md-12 col-12">
+            <div class="card text-center ml-5">
+                <div class="card-body">
+                    <h4 class="card-title bg-dark"><strong>Liste d'attente actuelle</strong></h4>
+
+                    <table class="table">
+                        <thead class="bg-secondary">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Ville</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <th>Événement</th>
+                            <th>Date début</th>
+                            <th>Place(s) réservée()s</th>
+                            <th>Date de la demande</th>
+                            <th>Supprimer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for userWait in waitList %}
+                            <tr>
+                                <th>{{ userWait.firstName }}</th>
+                                <td>{{ userWait.lastName }}</td>
+                                <td>{{ userWait.city }}</td>
+                                <td>{{ userWait.phone }}</td>
+                                <td>{{ userWait.email }}</td>
+                                <td>{{ userWait.title }}</td>
+                                <td>{{ userWait.startDate | date('d/m/Y') }}</td>
+                                <td>{{ userWait.number }}</td>
+                                <td>{{ userWait.createdAt | date('d/m/Y') }}</td>
+                                <td>
+                                    <a href="{{ path('admin_waitlist_delete', {'id': userWait.id }) }}" class="btn btn-danger">
+                                        Supprimer
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

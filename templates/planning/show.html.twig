@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Planning du cours{{ event.title }}{% endblock %}
+
+{% block body %}
+
+
+   <div class="container-fluid" style="background-image: url({{ asset('img/galaxybg.jpeg') }}); background-size: cover">
+       <div class="row">
+           <div class="col-md-6 col-12 offset-0 offset-md-3 py-5">
+               <div class="card text-center border-primary border-3" style="background: rgba(0,0,0,0.5)">
+                   <div class="card-img-thumbnail mt-2">
+                       <img src="{{ asset('uploads/' ~ event.picture) }}" style="max-height: 250px">
+                   </div>
+                   <div class="card-title mt-2" style="color: #fec206">
+                       <h3>Intitulé : {{ event.title }}</h3>
+                   </div>
+                   <div class="card-subtitle" style="color: #fec206">
+                       <h5>Programme : {{ event.category }}</h5>
+                   </div>
+                   <div class="card-body" style="color: white">
+                       <p class="text-bold">Description : {{ event.description }}</p>
+                       <p class="text-bold">Début : {{ event.startDate|date("d/m/Y") }} Fin : {{ event.endDate|date("d/m/Y") }}</p>
+                       <p class="text-bold">Places restantes : {{ event.seats }}</p>
+                       <p class="text-bold">Tranche d'âge : {{ event.ageMin }}-{{ event.ageMax }}</p>
+                       <p class="text-bold">Lieu : {{ event.location }}</p>
+                   </div>
+                   {% if event.seats > 0 %}
+                       <a class="btn col-4 btn-primary mx-auto mt-2 mb-5" type="button" href="{{ path('booking_create', {'slug': event.slug}) }}">Réserver</a>
+                   {% else %}
+                       <a href="{{ path('waitlist_create', {'slug': event.slug}) }}" class="btn col-4 btn-primary mx-auto mt-2 mb-5" type="button">Je suis interessé</a>
+                   {% endif %}
+               </div>
+           </div>
+       </div>
+   </div>
+
+{% endblock %}

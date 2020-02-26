@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur Euratech-Kids{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container-fluid mt-0 mb-5 pb-5">
+        <div  class="row mt-0">
+            <div class="col-12">
+                <div class="card text-center text-white">
+                    <img id="atf" class="card-img-top w-100" src="{{ asset('img/home.png') }}" alt="Card image">
+                    <div class="card-img-overlay mt-0 pt-0 mt-md-5 pt-md-4 col-12">
+                        <div class="col-8 offset-2 col-md-6 offset-md-3">
+                            <h1 class="card-title pt-0 pt-md-5 display-md-3 text-warning text-bold">Euratech'Kids</h1>
+                            <h3 class="card-text">Eveillez vos enfants au monde de demain</h3>
+                        </div>
+                        <div class="d-md-block col-md-3 offset-md-9 d-none">
+                            <div class="view">
+                                <div class="plane main">
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--fin containerimage-->
+
+    <div class="container text-black mb-5 pb-5">
+        <div class="row text-center my-5">
+            <div class="col-12">
+                <h1 class="display-md-4">Initiez vos enfants au monde du numérique</h1>
+                <hr class="col-8">
+                <h6 class="display-md-6">EuraTechnologies renforce son programme d'accompagnement des plus jeunes avec Euratech'kids pour donner aux enfants le gout de la programmation et les projeter dans le futur</h6>
+            </div>
+        </div>
+        <div class="row my-1 py-1 my-md-5 py-md-3">
+            <div class="card text-center col-md-4 col-10 offset-1 offset-md-0">
+                <div class="card-header mx-auto">
+                    <div class="view">
+                        <div class="plane2 main2">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body mt-4">
+                    <h5 class="card-title font-weight-bold">Apprendre à programmer</h5>
+                    <p class="card-text">Se construire une boite à outils et apprendre des compétences utiles à l'école.</p>
+                </div>
+            </div>
+            <div class="card text-center col-md-4 col-10 offset-1 offset-md-0">
+                <div class="card-header mx-auto">
+                    <div class="view">
+                        <div class="plane3 main3">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body mt-4">
+                    <h5 class="card-title font-weight-bold">Evénements</h5>
+                    <p class="card-text">Transmettre aux enfants le goût de la programmation,de la robotique et de l'ingénierie.</p>
+                </div>
+            </div>
+            <div class="card text-center col-md-4 col-10 offset-1 offset-md-0">
+                <div class="card-header mx-auto">
+                    <div class="view">
+                        <div class="plane4 main4">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body mt-4">
+                    <h5 class="card-title font-weight-bold">Créativité</h5>
+                    <p class="card-text">Developper la créativité au niveau de la conception, de la construction ou de la programmation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="card text-center col-md-4 col-10 offset-1 ml-md-auto">
+                <div class="card-header mx-auto">
+                    <div class="view">
+                        <div class="plane5 main5">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body mt-4">
+                    <h5 class="card-title font-weight-bold">Réflexion ludique</h5>
+                    <p class="card-text">Apprendre à développer une attitude positive face aux problèmes rencontrés.</p>
+                </div>
+            </div>
+            <div class="card text-center col-md-4 col-10 offset-1 mr-md-auto">
+                <div class="card-header mx-auto">
+                    <div class="view">
+                        <div class="plane6 main6">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body mt-4">
+                    <h5 class="card-title font-weight-bold">Ateliers collaboratifs</h5>
+                    <p class="card-text">Mettre en valeur les compétences et les talents des membres de l'équipe.</p>
+                </div>
+            </div>
+
+        </div>
+    </div> <!--fin container cards-->
+    <div class="container">
+        <div class="row text-center mx-5">
+            <div class="card mx-auto">
+                <div class="card-body text-center">
+                    <a href="{{ path('programs_index') }}" class="cust_btn2">Découvrir les programmes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="nl" class="container-fluid mt-5">
+        <div class="row my-5 py-5">
+            <div class="col-8 offset-2 text-center text-white">
+                <img class="py-5" src="{{ asset('img/newsletter.png') }}">
+                <h1>Rejoignez notre Newsletters</h1>
+                <h3>Et restez informé de notre actualité et de nos événements.</h3>
+
+
+                    <div class="form-group py-5 my-5">
+                        {{ form_start(form) }}
+                            {{ form_row(form.email) }}
+
+{#                        <label>Entrez votre adresse e-mail:</label>#}
+{#                        <input type="email" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="adresse@mail.fr">#}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div><!--fin containernews-->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 col-12 text-center">
+                <h2 class="py-2">Pour nous trouver:</h2>
+                <div class="map-responsive">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.6812896777237!2d3.0178653157333324!3d50.633037179501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d55c764ab439%3A0x2e9bfd5c48d283b!2sEuraTechnologies!5e0!3m2!1sfr!2sfr!4v1581788415268!5m2!1sfr!2sfr"  frameborder="0" style="border:0; margin-top: 40px" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

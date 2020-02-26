@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 180 180" style="enable-background:new 0 0 180 180;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.51;fill:#FFFFFF;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+	.st3{display:none;}
+	.st4{display:inline;}
+	.st5{opacity:0.5;fill:#FFFFFF;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
+	.st6{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
+	.st7{display:none;fill:#FFFFFF;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+</style>
+<g id="body">
+	<path class="st0" d="M152,59.2c0-30.3-26.8-54.9-60-54.9s-60,24.6-60,54.9l0,99.1c0,0.1,0,0.3,0,0.4c0,9.4,5.4,17,12.2,17
+		c6.7,0,12.2-7.6,12.2-17c0-0.1,0-0.3,0-0.4c0,0,0,0,0,0c0-3.1,1.7-5.5,3.8-5.5c2.1,0,3.8,2.7,3.8,5.8l0-0.3c0,0,0,0.5,0,0.6
+		c0,9.4,5.4,16.8,12.1,16.8s12.2-7.6,12.2-17c0-0.1,0-0.4,0-0.4l0-0.8c0-3.1,1.7-4.7,3.8-4.7s3.8,2.4,3.8,5.4l0,0.1c0,0,0,0.3,0,0.4
+		c0,9.4,5.4,17,12.2,17c6.7,0,12.2-7.6,12.2-17c0,0,0,0,0,0c0-0.1,0-0.2,0-0.3c0-3.1,1.7-5.6,3.8-5.6c2.1,0,3.8,2.4,3.8,5.4l0,0.1
+		c0,0.1,0,0.3,0,0.4c0,9.4,5.4,17,12.2,17c6.7,0,12.2-7.6,12.2-17c0-0.1,0-0.3,0-0.4v0.1V59.2z"/>
+	<path class="st1" d="M152,59.2c0-30.3-26.8-54.9-60-54.9s-60,24.6-60,54.9l0,99.1c0,0.1,0,0.3,0,0.4c0,9.4,5.4,17,12.2,17
+		c6.7,0,12.2-7.6,12.2-17c0-0.1,0-0.3,0-0.4c0,0,0,0,0,0c0-3.1,1.7-5.5,3.8-5.5c2.1,0,3.8,2.7,3.8,5.8l0-0.3c0,0,0,0.5,0,0.6
+		c0,9.4,5.4,16.8,12.1,16.8s12.2-7.6,12.2-17c0-0.1,0-0.4,0-0.4l0-0.8c0-3.1,1.7-4.7,3.8-4.7s3.8,2.4,3.8,5.4l0,0.1c0,0,0,0.3,0,0.4
+		c0,9.4,5.4,17,12.2,17c6.7,0,12.2-7.6,12.2-17c0,0,0,0,0,0c0-0.1,0-0.2,0-0.3c0-3.1,1.7-5.6,3.8-5.6c2.1,0,3.8,2.4,3.8,5.4l0,0.1
+		c0,0.1,0,0.3,0,0.4c0,9.4,5.4,17,12.2,17c6.7,0,12.2-7.6,12.2-17c0-0.1,0-0.3,0-0.4v0.1V59.2z"/>
+	<path id="ombre" class="st2" d="M140.8,115.7v-60c0,0,0.1-43.7-50.9-43.7"/>
+</g>
+<g id="eyes" class="st3">
+	<g id="oeil_gauche" class="st4">
+		<ellipse class="st5" cx="70.3" cy="77.5" rx="12.2" ry="17"/>
+		<ellipse class="st6" cx="70.3" cy="77.5" rx="12.2" ry="17"/>
+	</g>
+	<g id="oeil_droit" class="st4">
+		<ellipse class="st5" cx="102.1" cy="77.5" rx="12.2" ry="17"/>
+		<ellipse class="st6" cx="102.1" cy="77.5" rx="12.2" ry="17"/>
+	</g>
+</g>
+<ellipse id="eyeLeft" class="st7" cx="64.8" cy="81.9" rx="4.3" ry="6"/>
+<ellipse id="eyeRight" class="st7" cx="96.6" cy="81.9" rx="4.3" ry="6"/>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>

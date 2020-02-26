@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page profil{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid text-center text-white" id="events">
+        <h1 class="py-5 text-warning">Mes informations</h1>
+        <div class="row py-2 justify-content-center">
+
+            <div class="col-md-4 col-12">
+                <div class="card-body">
+                    <img src="{{ asset('img/robotguest.svg') }}" style="max-height: 400px">
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+                <div class="text-center text-black pt-5">
+                    <h2 class="alert-heading">Informations générales</h2>
+                    <hr />
+                    <h5>Bonjour, {{ user.fullName }}</h5>
+                    <h6>mail : {{ user.email }}</h6>
+                    <p>Ville : {{ user.city }}</p>
+                    <p>Téléphone : {{ user.phone }}</p>
+                </div>
+               <div class="text-center text-black pt-5">
+                   <h4 class="alert-heading">Modifier</h4>
+                   <hr />
+                   {% if user is same as(app.user) %}
+                       <a href="{{ path('account_profile') }}" class="btn btn-outline-primary mr-2 mb-2" style="border-radius: 18px;">
+                           Modifier mes informations
+                       </a>
+                       <a href="{{ path('account_password') }}" class="btn btn-outline-warning mb-2" style="border-radius: 18px;">
+                           Modifier mot de passe
+                       </a>
+                   {% endif %}
+               </div>
+            </div>
+        </div>
+
+        <h3 class="py-5 text-warning">Mes réservations</h3>
+        <a name="reservations"></a>
+        <div class="row text-center">
+            <div class="card col-md-8 offset-md-2 col-12 offset-0">
+                <h2 class="card-title">Événements</h2>
+                {% if user.bookings | length > 0 %}
+                    <div class="card-body">
+                        {% for event in user.bookings %}
+                            {% include 'account/booking.html.twig' %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+
+                    <p class="card-body">
+                        <strong>{{ user.firstName }} {{ user.lastName }}</strong> n'a pas de réservations actuellement ! !
+                    </p>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon programme{% endblock %}
+
+{% block body %}
+{#    <h1>Mon programme</h1>#}
+
+{#    {{ program.id }}#}
+{#    {{ program.title }}#}
+{#    {{ program.slug }}#}
+{#    {{ program.secondTitle }}#}
+{#    {{ program.description }}#}
+{#    {{ program.image }}#}
+{#    {{ program.intro }}#}
+{#    {{ program.limitedAge }}#}
+{#    {{ program.illustration }}#}
+
+{#    <img class="" src="{{ asset('uploads/' ~ program.image) }}" alt="Illustration du programme">#}
+{#    <img class="" src="{{ asset('uploads/' ~ program.illustration) }}" alt="Illustration du programme">#}
+
+{#    <a href="{{ path('programs_index') }}">retour à la liste des programmes</a>#}
+
+{#    {% if is_granted('ROLE_ADMIN') %}#}
+{#    <a href="{{ path('programs_edit', {'id': program.id}) }}">Editer le programme</a>#}
+{#    {% endif %}#}
+    {% if program %}
+
+    <div class="card pb-5 text-center" id="card-singlepage">
+        <div class="pt-5" style="min-height: 180px"><h1 style="color: #F5871F !important;">{{ program.title }}</h1></div>
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-md-4 col-sm-8 my-auto">
+                    <img src="{{ asset('uploads/' ~ program.illustration) }}" alt="..." style="max-height: 250px">
+                </div>
+                <div class="col-md-4 col-sm-8">
+                    <h5 class="mb-5">{{ program.secondTitle }}</h5>
+                    <p class="mt-2"><h6 class="text-white">{{ program.intro|raw }}</h6></p>
+                </div>
+                <div class="col-md-4 col-sm-8 my-auto">
+                    <img src="{{ asset('uploads/' ~ program.image) }}" alt="...">
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
