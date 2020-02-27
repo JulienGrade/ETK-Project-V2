@@ -7,6 +7,7 @@ use App\Entity\Role;
 use App\Entity\User;
 use App\Form\AdminRegistrationType;
 use App\Form\RegistrationType;
+use App\Service\PaginationService;
 use App\Service\StatsService;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -101,12 +102,17 @@ class AdminAccountController extends AbstractController
     }
 
     /**
-     * @Route("/admin/users/list", name="admin_users_list")
+     * @Route("/admin/users/{page<\d+>?1}", name="admin_users_list")
      * @param StatsService $statsService
+     * @param $page int
+     * @param PaginationService $pagination
      * @return Response
      */
-    public function list2(StatsService $statsService)
+    public function list2(StatsService $statsService, $page, PaginationService $pagination)
     {
+        $pagination ->setEntityClass(User::class)
+                    ->setPage($page);
+
         $stats          = $statsService->getStats();
         $activeStats    = $statsService->getActiveStats();
         $nowStats       = $statsService->getNowStats();
@@ -125,13 +131,18 @@ class AdminAccountController extends AbstractController
             'cityStats'     => $cityStats,
             'ageStats'      => $ageStats,
             'genderStats'   => $genderStats,
+            'current_menu'  => 'userList',
+            'pagination'    => $pagination,
         ]);
     }
 
     /**
      * @Route("/admin/users/delete/{id}", name="admin_users_delete", methods={"POST"})
+     * @param Request $request
+     * @param User $user
+     * @return Response
      */
-    public function delete(Request $request, User $user): Response
+    public function delete(Request $request, User $user)
     {
 
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {

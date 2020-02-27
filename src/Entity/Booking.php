@@ -3,15 +3,22 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BookingsRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(
+ *     fields= {"event", "booker"},
+ *     message="Vous avez déjà réservé pour cet événement !"
+ * )
  *
  */
 class Booking
@@ -49,9 +56,11 @@ class Booking
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Children", mappedBy="booking", orphanRemoval=true,cascade={"persist"})
      * @Assert\Valid()
+     * @Assert\NotBlank(message="Vous devez inscrire au moins un enfant de l'age recquit pour l'événement")
      *
      */
     private $childrens;
+
 
     public function __construct()
     {
@@ -72,8 +81,10 @@ class Booking
 
     // Permet de verifier que l'age des enfants correspond à l'age de l'événement
 
+
     /**
-     * @Assert\Callback
+     *
+     * @Assert\Callback(groups={"Edit"})
      * @param ExecutionContextInterface $context
      */
     public function validate(ExecutionContextInterface $context){
@@ -176,4 +187,5 @@ class Booking
 
         return $this;
     }
+
 }

@@ -37,23 +37,24 @@
                </div>
             </div>
         </div>
-
+        {{ dump() }}
         <h3 class="py-5 text-warning">Mes réservations</h3>
         <a name="reservations"></a>
         <div class="row text-center">
             <div class="card col-md-8 offset-md-2 col-12 offset-0">
-                <h2 class="card-title">Événements</h2>
+
                 {% if user.bookings | length > 0 %}
                     <div class="card-body">
-                        {% for event in user.bookings %}
+                        <h2 class="card-title">Événements</h2>
+
                             {% include 'account/booking.html.twig' %}
-                        {% endfor %}
+
                     </div>
                 {% else %}
 
-                    <p class="card-body">
-                        <strong>{{ user.firstName }} {{ user.lastName }}</strong> n'a pas de réservations actuellement ! !
-                    </p>
+                    <div class="card-body">
+                        <p class="card-text hidden-empty"><strong>{{ user.firstName }} {{ user.lastName }}</strong> n'a pas de réservation actuellement ! !</p>
+                    </div>
 
                 {% endif %}
             </div>

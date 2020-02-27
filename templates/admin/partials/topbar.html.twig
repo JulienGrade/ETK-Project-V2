@@ -4,16 +4,64 @@
 
         <div class="topbar-divider d-none d-md-block"></div>
 
-        <div class="header-action">
+        <div class="header-action d-none">
+            <div class="dropdown d-none d-md-block">
+                <span class="topbar-btn" data-toggle="dropdown"><i class="fas fa-th"></i></span>
+                <div class="dropdown-menu dropdown-grid">
+                    <a class="dropdown-item" href="{{ path('admin_dashboard') }}">
+                        <span><i class="fas fa-home"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                    <a class="dropdown-item" href="{{ path('admin_events_index') }}">
+                        <span><i class="fab fa-font-awesome-flag"></i></span>
+                        <span class="title">Événements</span>
+                    </a>
+                    <a class="dropdown-item" href="{{ path('admin_waitlist_index') }}">
+                        <span><i class="fas fa-tasks"></i></span>
+                        <span class="title">Liste d'attente</span>
+                    </a>
+                    <a class="dropdown-item" href="{{ path('admin_booking_index') }}">
+                        <span><i class="fas fa-calendar-alt"></i></span>
+                        <span class="title">Réservations</span>
+                    </a>
+                    <a class="dropdown-item" href="{{ path('admin_programs_index') }}">
+                        <span><i class="fas fa-graduation-cap"></i></span>
+                        <span class="title">Programmes</span>
+                    </a>
+                    <a class="dropdown-item" href="{{ path('admin_users_list') }}">
+                        <span><i class="fas fa-users"></i></span>
+                        <span class="title">Utilisateurs</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <span data-i8-icon="contacts"></span>
+                        <span class="title">Contacts</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <span data-i8-icon="download"></span>
+                        <span class="title">Download</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <span data-i8-icon="settings"></span>
+                        <span class="title">Settings</span>
+                    </a>
+                </div>
+            </div>
+        </div>
             <nav class="nav">
                 <a class="nav-link{% if current_menu is defined and current_menu == 'dashboard' %}active{% endif %}" href="{{ path('admin_dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
                 <a class="nav-link{% if current_menu is defined and current_menu == 'event' %}active{% endif %}" href="{{ path('admin_events_index') }}"><i class="fab fa-font-awesome-flag"></i> Événements</a>
                 <a class="nav-link{% if current_menu is defined and current_menu == 'waitlist' %}active{% endif %}" href="{{ path('admin_waitlist_index') }}"><i class="fas fa-tasks"></i> Liste d'attente</a>
                 <a class="nav-link{% if current_menu is defined and current_menu == 'booking' %}active{% endif %}" href="{{ path('admin_booking_index') }}"><i class="fas fa-calendar-alt"></i> Réservations</a>
                 <a class="nav-link{% if current_menu is defined and current_menu == 'program' %}active{% endif %}" href="{{ path('admin_programs_index') }}"><i class="fas fa-graduation-cap"></i> Programmes</a>
-                <a class="nav-link{% if current_menu is defined and current_menu == 'createevent' %}active{% endif %}" href="{{ path('admin_events_create') }}"><i class="fas fa-plus-circle"></i> Créer un événement</a>
-                <a class="nav-link{% if current_menu is defined and current_menu == 'createprogram' %}active{% endif %}" href="{{ path('admin_programs_create') }}"><i class="fas fa-plus-circle"></i> Créer un programme</a>
+                <a class="nav-link{% if current_menu is defined and current_menu == 'userList' %}active{% endif %}" href="{{ path('admin_users_list') }}"><i class="fas fa-users"></i> Utilisateurs</a>
             </nav>
+            <div class="dropdown">
+                <span class="topbar-btn" data-toggle="dropdown"><i class="fas fa-plus-circle"></i> Créer</span>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item nav-link {% if current_menu is defined and current_menu == 'createprogram' %}active{% endif %}" href="{{ path('admin_programs_create') }}"><i class="fas fa-plus-circle"></i> Créer un programme</a>
+                    <a class="dropdown-item nav-link {% if current_menu is defined and current_menu == 'createevent' %}active{% endif %}" href="{{ path('admin_events_create') }}"><i class="fas fa-plus-circle"></i> Créer un événement</a>
+                </div>
+            </div>
         </div>
     </div>
 

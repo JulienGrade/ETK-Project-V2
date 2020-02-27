@@ -18,6 +18,10 @@ body {
 .nav-link, .navbar-brand{
     color: white !important;
 }
+.hidden-empty{
+    color: #00074a !important;
+
+}
 .dropdown-menu{
     background: rgb(0,9,94) !important;
     background: linear-gradient(90deg, rgba(0,9,94,1) 0%, rgba(0,2,25,1) 100%) !important;

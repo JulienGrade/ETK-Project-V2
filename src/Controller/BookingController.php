@@ -31,12 +31,15 @@ class BookingController extends AbstractController
     {
         $booking = new Booking();
 
-        $form = $this->createForm(BookingType::class, $booking);
+        $form = $this->createForm(BookingType::class, $booking, [
+            'validation_groups' => ['Default']
+        ]);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
+
 
             $booking->setBooker($user)
                     ->setEvent($event);
@@ -46,15 +49,15 @@ class BookingController extends AbstractController
             $event->setSeats($event->getSeats() - $tickets);
             $manager->persist($event);
 
-            foreach ($childrens as $children) {
+            foreach ($childrens as $children){
                 $children -> setBooking($booking);
+
                 if($children->getAge() < $event->getAgeMin() || $children->getAge() > $event->getAgeMax()){
                     $this->addFlash(
                         'warning',
                         "L'âge de votre enfant doit correspondre à l'âge requit pour cet événement"
                     );
                 }else{
-
                     $manager->persist($children);
                     $manager->persist($booking);
                     $manager->flush();
@@ -94,7 +97,9 @@ class BookingController extends AbstractController
     {
         $childrensOld=count($booking->getChildrens());
 
-        $form = $this->createForm(BookingType::class, $booking);
+        $form = $this->createForm(BookingType::class, $booking, [
+            'validation_groups' => ['Default', 'Edit']
+        ]);
 
         $form->handleRequest($request);
 
@@ -110,11 +115,6 @@ class BookingController extends AbstractController
             $event->setSeats($event->getSeats() - $ticket + $childrensOld);
             $manager->persist($event);
 
-
-            foreach ($childrens as $children) {
-                $children -> setBooking($booking);
-                $manager->persist($children);
-            }
 
             $manager->persist($booking);
             $manager->flush();

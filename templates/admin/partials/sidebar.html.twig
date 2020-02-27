@@ -52,6 +52,12 @@
                     <span class="title">Programmes</span>
                 </a>
             </li>
+            <li class="menu-item {% if current_menu is defined and current_menu == 'userList' %}active{% endif %}">
+                <a class="menu-link" href="{{ path('admin_users_list') }}">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <span class="title">Utilisateurs</span>
+                </a>
+            </li>
 
             <li class="menu-item {% if current_menu is defined and current_menu == 'createevent' or current_menu == 'createprogram' %}active{% endif %} dropdown">
                 <span class="menu-link title" data-toggle="dropdown"><i class="fas fa-plus-circle"></i>Créer</span>
