@@ -17,8 +17,6 @@ class ProgramsType extends ApplicationType
         $builder
             ->add('title', TextType::class,
                 $this->getConfiguration('Titre du programme', 'titre'))
-            ->add('slug', TextType::class,
-                $this->getConfiguration('URL', 'slug'))
             ->add('image',FileType::class, [
                 'mapped' => false
                 ])

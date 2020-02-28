@@ -33,7 +33,7 @@ class PaginationService
      *
      * @var int
      */
-    private $limit = 10;
+    private $limit = 15;
 
     /**
      * La page sur laquelle on se trouve actuellement

@@ -124,7 +124,7 @@ class AdminAccountController extends AbstractController
         $users = $repository->findAll();
 
         return $this->render('admin/account/adminList.html.twig', [
-            'users' => $users,
+            'users'         => $users,
             'stats'         => $stats,
             'activeStats'   => $activeStats,
             'nowStats'      => $nowStats,

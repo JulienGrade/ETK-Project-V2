@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\WaitList;
 use App\Repository\WaitListRepository;
+use App\Service\PaginationService;
 use App\Service\StatsService;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,13 +15,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminWaitListController extends AbstractController
 {
     /**
-     * @Route("/admin/attente", name="admin_waitlist_index")
+     * @Route("/admin/attente/{page<\d+>?1}", name="admin_waitlist_index")
      * @param WaitListRepository $waitListRepo
      * @param StatsService $statsService
+     * @param $page int
+     * @param PaginationService $pagination
      * @return Response
      */
-    public function index(WaitListRepository $waitListRepo, StatsService $statsService)
+    public function index(WaitListRepository $waitListRepo, StatsService $statsService, $page, PaginationService $pagination)
     {
+        $pagination ->setEntityClass(WaitList::class)
+            ->setPage($page);
+
         $stats              = $statsService->getStats();
         $activeStats        = $statsService->getActiveStats();
         $nowStats           = $statsService->getNowStats();
@@ -38,6 +44,7 @@ class AdminWaitListController extends AbstractController
             'genderStats'       => $genderStats,
             'waitList'          => $waitList,
             'current_menu'      => 'waitlist',
+            'pagination'    => $pagination,
         ]);
     }
 

@@ -1,0 +1,39 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Détails de la réservation : {{ program.id }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="mt-5 justify-content-center">
+            <div class="card col-md-8 col-lg-10 ">
+                <header class="card-header">
+                    <img src="{{ program.image }}" />
+                    <h4 class="card-title"><strong>{{ program.title }}</strong> <small class="subtitle">{{program.secondTitle}}</small></h4>
+                    <h5>Age : {{ program.limitedAge }}</h5>
+                </header>
+
+                <div class="card-body">
+                    <div class="card-text">
+                        <p>{{program.description}}</p>
+                        <p>{{ program.intro }}</p>
+                    </div>
+                    <div class="input-group justify-content-around">
+                        <a class="btn btn-warning" href="#">Éditer <i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger" href="{{ path('admin_programs_delete', {'id': program.id}) }}">Supprimer <i class="fas fa-trash"></i></a>
+                        <a class="btn btn-primary" href="{{ path('admin_programs_index') }}">Retour à la liste <i class="fas fa-backward"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+                <hr>
+
+                <div class="text-right">
+                    <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

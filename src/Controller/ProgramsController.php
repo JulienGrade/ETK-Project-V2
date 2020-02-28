@@ -25,7 +25,7 @@ class ProgramsController extends AbstractController
     }
 
     /**
-     * @Route("/program/{id}", name="programs_show", methods={"GET"})
+     * @Route("/programme/{id}", name="programs_show", methods={"GET"})
      * @param Programs $program
      * @return Response
      */

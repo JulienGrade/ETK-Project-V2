@@ -25,7 +25,7 @@ class StatsService
     }
 
     public function getPrograms(){
-        return $this->manager->createQuery('SELECT p.title, p.secondTitle,p.description, p.slug, p.image
+        return $this->manager->createQuery('SELECT p.title, p.secondTitle,p.description, p.slug, p.image, p.id, p.limitedAge
         FROM App\Entity\Programs p
         ORDER BY p.title DESC
         ')->getResult();

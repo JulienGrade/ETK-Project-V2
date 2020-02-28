@@ -4,8 +4,8 @@
 
         <div class="topbar-divider d-none d-md-block"></div>
 
-        <div class="header-action d-none">
-            <div class="dropdown d-none d-md-block">
+        <div class="header-action">
+            <div class="dropdown d-none d-md-block d-xl-none">
                 <span class="topbar-btn" data-toggle="dropdown"><i class="fas fa-th"></i></span>
                 <div class="dropdown-menu dropdown-grid">
                     <a class="dropdown-item" href="{{ path('admin_dashboard') }}">
@@ -46,8 +46,7 @@
                     </a>
                 </div>
             </div>
-        </div>
-            <nav class="nav">
+            <nav class="nav d-none d-lg-block">
                 <a class="nav-link{% if current_menu is defined and current_menu == 'dashboard' %}active{% endif %}" href="{{ path('admin_dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
                 <a class="nav-link{% if current_menu is defined and current_menu == 'event' %}active{% endif %}" href="{{ path('admin_events_index') }}"><i class="fab fa-font-awesome-flag"></i> Événements</a>
                 <a class="nav-link{% if current_menu is defined and current_menu == 'waitlist' %}active{% endif %}" href="{{ path('admin_waitlist_index') }}"><i class="fas fa-tasks"></i> Liste d'attente</a>
@@ -62,34 +61,31 @@
                     <a class="dropdown-item nav-link {% if current_menu is defined and current_menu == 'createevent' %}active{% endif %}" href="{{ path('admin_events_create') }}"><i class="fas fa-plus-circle"></i> Créer un événement</a>
                 </div>
             </div>
+            <div class="topbar-right">
+                <ul class="topbar-btns">
+                    <li class="dropdown">
+                        <span class="topbar-btn" data-toggle="dropdown"><i class="fas fa-cogs"></i></span>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{ path('admin_account_register') }}"><i class="fas fa-users-cog"></i> Créer un admin</a>
+                            <a class="dropdown-item" href="{{ path('admin_users_list') }}"><i class="fas fa-user-shield"></i> Gérer les admins</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ path('admin_account_logout') }}"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
+                        </div>
+                    </li>
+                    <!-- Messages -->
+                    <li class="menu-item">
+                        <a class="menu-link" href="#">
+                            <span class="icon"><i class="fas fa-envelope"></i></span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" href="#">
+                            <span class="icon"><i class="fab fa-mailchimp"></i></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="topbar-right">
-        <ul class="topbar-btns">
-            <li class="dropdown">
-                <span class="topbar-btn" data-toggle="dropdown"><i class="fas fa-cogs"></i></span>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ path('admin_account_register') }}"><i class="fas fa-users-cog"></i> Créer un admin</a>
-                    <a class="dropdown-item" href="{{ path('admin_users_list') }}"><i class="fas fa-user-shield"></i> Gérer les admins</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ path('admin_account_logout') }}"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
-                </div>
-            </li>
 
-
-
-            <!-- Messages -->
-            <li class="menu-item">
-                <a class="menu-link" href="#">
-                    <span class="icon"><i class="fas fa-envelope"></i></span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a class="menu-link" href="#">
-                    <span class="icon"><i class="fab fa-mailchimp"></i></span>
-                </a>
-            </li>
-        </ul>
-
-    </div>

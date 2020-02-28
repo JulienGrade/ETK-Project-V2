@@ -3,18 +3,35 @@
 {% block title %}Liste des programmes{% endblock %}
 
 {% block body %}
-    <div class="row mt-5 justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card text-center ml-5">
-                <h4 class="card-title bg-dark">Liste des programmes</h4>
-                {% for program in programs %}
-                    <div class="media-list media-list-hover">
-                        <div class="media media-single">
-                            <a href="{{ path('programs_show', {'id': program.id}) }}"><span>{{program.title}} / {{ program.secondTitle }} </span></a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+    <div class="container">
+        <table class="table mt-5">
+            <thead class="bg-secondary">
+            <tr>
+                <td>Thème</td>
+                <td>Titre</td>
+                <td>Age</td>
+                <td>Détails</td>
+                <td>Éditer</td>
+                <td>Suppression</td>
+            </tr>
+            </thead>
+            {% for program in programs %}
+                <tr>
+                    <td>{{program.title}}</td>
+                    <td>{{ program.secondTitle }}</td>
+                    <td>{{ program.limitedAge }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('admin_programs_show', {'slug': program.slug}) }}">Détails <i class="fas fa-info-circle"></i></a>
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" href="#">Éditer <i class="fas fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{{ path('admin_programs_delete', {'id': program.id}) }}">Supprimer <i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
+    {{ pagination.display() }}
 {% endblock %}

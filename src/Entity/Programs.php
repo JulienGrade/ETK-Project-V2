@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProgramsRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Programs
 {
@@ -20,6 +22,20 @@ class Programs
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    /**
+     * Permet d'initialiser le slug
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function initializeSlug()
+    {
+        if(empty($this->slug))  {
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->title);
+        }
+    }
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -55,6 +71,8 @@ class Programs
      * @ORM\Column(type="string", length=255)
      */
     private $illustration;
+
+
 
     public function getId(): ?int
     {

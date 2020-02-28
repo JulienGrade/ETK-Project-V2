@@ -3,22 +3,11 @@
 {% block title %}Administration des reservations{% endblock %}
 
 {% block body %}
+<div class="container">
     <div class="row mt-5 justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card text-center ml-5">
-                <h4 class="card-title bg-dark">Liste des réservations</h4>
-                {% for booking in bookings %}
-                    <div class="media-list media-list-hover">
-                        <div class="media media-single">
-                            <a href="{{ path('admin_bookings_show', {'id': booking.id}) }}"><span>{{booking.firstName}} {{ booking.lastName }} réservé le : {{ booking.createdAt |date('d/m/Y') }} débute le {{ booking.startDate |date('d/m/Y') }}</span></a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-4">
+        <div class="row">
             <div class="col-md-6 col-xl-6">
-                <div class="card card-body">
+                <div class="card card-body h-150px">
                     <div class="flexbox">
                         <span class="text-warning fs-40"><i class="fas fa-calendar-week"></i></span>
                         <span class="fs-40 fw-100">{{ activeStats.activeBookings | length}}</span>
@@ -27,7 +16,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-xl-6">
-                <div class="card card-body">
+                <div class="card card-body h-150px">
                     <div class="flexbox">
                         <span class="text-danger fs-40"><i class="fas fa-calendar-week"></i></span>
                         <span class="fs-40 fw-100">{{ nowStats.nowBookings | length }}</span>
@@ -36,5 +25,33 @@
                 </div>
             </div>
         </div>
+        <table class="table mt-5">
+            <thead class="bg-dark">
+            <tr>
+                <td>Prénom</td>
+                <td>Nom</td>
+                <td>Date réservation</td>
+                <td>Cours débutant le</td>
+                <td>Téléphone</td>
+                <td>Détails</td>
+            </tr>
+            </thead>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{booking.firstName}}</td>
+                    <td>{{ booking.lastName }}</td>
+                    <td>{{ booking.createdAt |date('d/m/Y') }}</td>
+                    <td>{{ booking.startDate |date('d/m/Y') }}</td>
+                    <td>{{ booking.phone }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('admin_bookings_show', {'id': booking.id}) }}">Détails <i class="fas fa-info-circle"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
     </div>
+    {{ pagination.display() }}
+    {{ dump() }}
+</div>
 {% endblock %}

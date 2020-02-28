@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Programs;
+use App\Entity\User;
 use App\Form\ProgramsType;
 use App\Repository\ProgramsRepository;
+use App\Service\PaginationService;
 use App\Service\StatsService;
 use App\Service\Uploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,14 +21,19 @@ class AdminProgramsController extends AbstractController
     /**
      * Permet d'afficher la liste des prgrammes dans la partie admin
      *
-     * @Route("/admin/programmes", name="admin_programs_index")
+     * @Route("/admin/programmes/{page<\d+>?1}", name="admin_programs_index")
      *
      * @param ProgramsRepository $programsRepository
      * @param StatsService $statsService
+     * @param $page int
+     * @param PaginationService $pagination
      * @return Response
      */
-    public function index(ProgramsRepository $programsRepository, StatsService $statsService)
+    public function index(ProgramsRepository $programsRepository, StatsService $statsService, $page, PaginationService $pagination)
     {
+        $pagination ->setEntityClass(Programs::class)
+            ->setPage($page);
+
         $programs       = $statsService->getPrograms();
         $stats          = $statsService->getStats();
         $activeStats    = $statsService->getActiveStats();
@@ -44,6 +51,7 @@ class AdminProgramsController extends AbstractController
             'ageStats'      => $ageStats,
             'genderStats'   => $genderStats,
             'current_menu'  => 'program',
+            'pagination'    => $pagination,
         ]);
     }
 
@@ -148,6 +156,33 @@ class AdminProgramsController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_programs_index');
+    }
+
+    /**
+     * @Route("/admin/programme/{slug}", name="admin_programs_show", methods={"GET"})
+     * @param Programs $program
+     * @param StatsService $statsService
+     * @return Response
+     */
+    public function show(Programs $program, StatsService $statsService): Response
+    {
+        $stats          = $statsService->getStats();
+        $activeStats    = $statsService->getActiveStats();
+        $nowStats       = $statsService->getNowStats();
+        $cityStats      = $statsService->getCityStats();
+        $ageStats       = $statsService->getAgeStats();
+        $genderStats    = $statsService->getGenderStats();
+
+        return $this->render('admin/programs/show.html.twig', [
+            'program'       => $program,
+            'current_menu'  => 'program',
+            'stats'         => $stats,
+            'activeStats'   => $activeStats,
+            'nowStats'      => $nowStats,
+            'cityStats'     => $cityStats,
+            'ageStats'      => $ageStats,
+            'genderStats'   => $genderStats,
+        ]);
     }
 
 }
