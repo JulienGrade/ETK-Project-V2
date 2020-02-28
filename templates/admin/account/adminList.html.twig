@@ -5,13 +5,14 @@
 {% block body %}
         <div class="container">
             <table class="table mt-5">
-                <thead class="bg-secondary">
+                <thead class="bg-dark">
                 <tr>
                     <td>Prénom</td>
                     <td>Nom</td>
                     <td>Email</td>
                     <td>Téléphone</td>
                     <td>Ville</td>
+                    <td>Inscrit depuis</td>
                     <td>Suppression</td>
                 </tr>
                 </thead>
@@ -22,6 +23,7 @@
                         <td>{{ user.email }}</td>
                         <td>{{ user.phone }}</td>
                         <td>{{ user.city }}</td>
+                        <td>{{ user.createdAt | date('d/m/Y') }}</td>
                         <td>
                             {#                    <form action="{{ path('admin_users_delete', {'id': user.id }) }}" method="post">#}
                             {#                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}">#}
@@ -38,5 +40,9 @@
                 {% endfor %}
             </table>
         </div>
+    {{ dump() }}
+    <div class="text-right">
+        <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+    </div>
     {{ pagination.display() }}
 {% endblock %}

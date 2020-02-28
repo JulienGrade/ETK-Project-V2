@@ -89,7 +89,6 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title bg-dark"><strong>Enfants présents ce jour</strong></h4>
-
                     <table class="table">
                         <thead class="bg-secondary">
                         <tr>
@@ -101,7 +100,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for nowChildren in nowStats.nowChildrens %}
+
+                        {% for nowChildren in nowStats.nowChildrens | slice(0, 10) %}
                             <tr>
                                 <th>{{ nowChildren.firstName }}</th>
                                 <td>{{ nowChildren.lastName }}</td>
@@ -109,9 +109,17 @@
                                 <td>{{ nowChildren.title }}</td>
                                 <td>{{ nowChildren.startDate | date('d/m/Y') }}</td>
                             </tr>
+
                         {% endfor %}
+
                         </tbody>
+
+
                     </table>
+                    {% if nowStats.nowChildrens | length > 10 %}
+                        <a class="btn btn-danger" href="{{ path('admin_dashboard_list') }}">Plus de 10 enfants ce jour voir la liste complète</a>
+                    {% endif %}
+
                 </div>
             </div>
         </div>

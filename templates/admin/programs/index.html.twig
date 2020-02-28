@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container">
         <table class="table mt-5">
-            <thead class="bg-secondary">
+            <thead class="bg-dark">
             <tr>
                 <td>Thème</td>
                 <td>Titre</td>
@@ -32,6 +32,9 @@
                 </tr>
             {% endfor %}
         </table>
+        <div class="text-right">
+            <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+        </div>
     </div>
     {{ pagination.display() }}
 {% endblock %}

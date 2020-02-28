@@ -3,42 +3,53 @@
 {% block title %}Administration des événements{% endblock %}
 
 {% block body %}
-    <div class="row mt-5 justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card text-center ml-5">
-                <h4 class="card-title bg-dark">Liste des événements</h4>
+    <div class="container">
+        <div class="row mt-5 justify-content-center">
+            <div class="row">
+                <div class="col-md-6 col-xl-6">
+                    <div class="card card-body">
+                        <div class="flexbox">
+                            <span class="text-warning fs-40"><i class="fas fa-calendar-week"></i></span>
+                            <span class="fs-40 fw-100">{{ activeStats.activeEvents | length}}</span>
+                        </div>
+                        <div class="text-right">Événement(s) en cours</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-6">
+                    <div class="card card-body">
+                        <div class="flexbox">
+                            <span class="text-danger fs-40"><i class="fas fa-calendar-week"></i></span>
+                            <span class="fs-40 fw-100">{{ nowStats.nowEvents | length }}</span>
+                        </div>
+                        <div class="text-right">Événement débutant ce jour !</div>
+                    </div>
+                </div>
+            </div>
+            <table class="table mt-5">
+                <thead class="bg-dark">
+                <tr>
+                    <td>Titre</td>
+                    <td class="text-center">Nombre de places restantes</td>
+                    <td>Date début</td>
+                    <td>Cours débutant le</td>
+                </tr>
+                </thead>
                 {% for event in events %}
-                <div class="media-list media-list-hover">
-                    <div class="media media-single">
-                        <a href="{{ path('admin_events_show', {'slug': event.slug}) }}"><span>{{event.title}} {{ event.seats }} places débute le {{ event.startDate |date('d/m/Y') }}</span></a>
-                    </div>
-                </div>
+                    <tr>
+                        <td>{{event.title}}</td>
+                        <td class="text-center">{{ event.seats }}</td>
+                        <td>{{ event.startDate |date('d/m/Y') }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ path('admin_events_show', {'slug': event.slug}) }}">Détails <i class="fas fa-info-circle"></i></a>
+                        </td>
+                    </tr>
                 {% endfor %}
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-4">
-            <div class="col-md-6 col-xl-6">
-                <div class="card card-body">
-                    <div class="flexbox">
-                        <span class="text-warning fs-40"><i class="fas fa-calendar-week"></i></span>
-                        <span class="fs-40 fw-100">{{ activeStats.activeEvents | length}}</span>
-                    </div>
-                    <div class="text-right">Événement(s) en cours</div>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-6">
-                <div class="card card-body">
-                    <div class="flexbox">
-                        <span class="text-danger fs-40"><i class="fas fa-calendar-week"></i></span>
-                        <span class="fs-40 fw-100">{{ nowStats.nowEvents | length }}</span>
-                    </div>
-                    <div class="text-right">Événement débutant ce jour !</div>
-                </div>
-            </div>
-            <div class="text-right">
-                <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
-            </div>
-        </div>
+            </table>
 
+        </div>
+        <div class="text-right">
+            <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+        </div>
+        {{ pagination.display() }}
     </div>
 {% endblock %}

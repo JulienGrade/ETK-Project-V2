@@ -6,11 +6,15 @@
 
         <div class="header-action">
             <div class="dropdown d-none d-md-block d-xl-none">
-                <span class="topbar-btn" data-toggle="dropdown"><i class="fas fa-th"></i></span>
+                <span class="topbar-btn" data-toggle="dropdown"><i class="fas fa-th fa-3x my-3"></i></span>
                 <div class="dropdown-menu dropdown-grid">
                     <a class="dropdown-item" href="{{ path('admin_dashboard') }}">
                         <span><i class="fas fa-home"></i></span>
                         <span class="title">Dashboard</span>
+                    </a>
+                    <a class="dropdown-item" href="{{ path('admin_dashboard_list') }}">
+                        <span><i class="fas fa-child"></i></span>
+                        <span class="title">Enfants ce jour</span>
                     </a>
                     <a class="dropdown-item" href="{{ path('admin_events_index') }}">
                         <span><i class="fab fa-font-awesome-flag"></i></span>
@@ -31,10 +35,6 @@
                     <a class="dropdown-item" href="{{ path('admin_users_list') }}">
                         <span><i class="fas fa-users"></i></span>
                         <span class="title">Utilisateurs</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <span data-i8-icon="contacts"></span>
-                        <span class="title">Contacts</span>
                     </a>
                     <a class="dropdown-item" href="#">
                         <span data-i8-icon="download"></span>

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
+use App\Service\PaginationService;
 use App\Service\StatsService;
 use App\Service\Uploader;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -19,13 +20,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminEventController extends AbstractController
 {
     /**
-     * @Route("/admin/evenements", name="admin_events_index")
+     * @Route("/admin/evenements/{page<\d+>?1}", name="admin_events_index")
      * @param EventRepository $eventRepo
      * @param StatsService $statsService
+     * @param $page int
+     * @param PaginationService $pagination
      * @return Response
      */
-    public function index(EventRepository $eventRepo, StatsService $statsService)
+    public function index(EventRepository $eventRepo, StatsService $statsService, $page, PaginationService $pagination)
     {
+        $pagination ->setEntityClass(Event::class)
+            ->setPage($page);
+
         $events         = $statsService->getEvents();
         $stats          = $statsService->getStats();
         $activeStats    = $statsService->getActiveStats();
@@ -43,6 +49,7 @@ class AdminEventController extends AbstractController
             'ageStats'      => $ageStats,
             'genderStats'   => $genderStats,
             'current_menu'  => 'event',
+            'pagination'    => $pagination,
         ]);
     }
 
@@ -131,7 +138,7 @@ class AdminEventController extends AbstractController
             'cityStats'     => $cityStats,
             'ageStats'      => $ageStats,
             'genderStats'   => $genderStats,
-            'current_menu' => 'createevent',
+            'current_menu' => 'event',
         ]);
     }
 
@@ -193,6 +200,7 @@ class AdminEventController extends AbstractController
             'cityStats'     => $cityStats,
             'ageStats'      => $ageStats,
             'genderStats'   => $genderStats,
+            'current_menu'  => 'event',
         ]);
     }
 

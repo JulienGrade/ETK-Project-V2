@@ -1,0 +1,47 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Liste Enfants présents ce jour{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="col-md-12 col-lg-10">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title bg-dark"><strong>Enfants présents ce jour</strong></h4>
+                <table class="table table-responsive">
+                    <thead class="bg-secondary">
+                    <tr>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Age</th>
+                        <th>Événement</th>
+                        <th>Date début</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for nowChildren in nowStats.nowChildrens %}
+                        <tr>
+                            <th>{{ nowChildren.firstName }}</th>
+                            <td>{{ nowChildren.lastName }}</td>
+                            <td>{{ nowChildren.age }}</td>
+                            <td>{{ nowChildren.title }}</td>
+                            <td>{{ nowChildren.startDate | date('d/m/Y') }}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+
+                </table>
+                <div class="text-right">
+                    <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

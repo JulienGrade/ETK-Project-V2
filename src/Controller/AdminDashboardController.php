@@ -46,4 +46,41 @@ class AdminDashboardController extends AbstractController
             'current_menu'          => 'dashboard',
         ]);
     }
+
+    /**
+     * @Route("/admin/list", name="admin_dashboard_list")
+     *
+     * @param ObjectManager $manager
+     * @param StatsService $statsService
+     * @return Response
+     */
+    public function list(ObjectManager $manager, StatsService $statsService)
+    {
+        $stats                  = $statsService->getStats();
+        $activeStats            = $statsService->getActiveStats();
+        $nowStats               = $statsService->getNowStats();
+        $cityStats              = $statsService->getCityStats();
+        $ageStats               = $statsService->getAgeStats();
+        $genderStats            = $statsService->getGenderStats();
+        $eventTypeStats         = $statsService->getEventTypeStats();
+        $monthlyStats           = $statsService->getMonthlyStats();
+        $newUser                = $statsService->getNewUser();
+        $waitList               = $statsService->getWaitList();
+        $monthlyWaitList        = $statsService->getMonthlyWaitList();
+
+        return $this->render('admin/dashboard/list.html.twig', [
+            'stats'                 => $stats,
+            'activeStats'           => $activeStats,
+            'nowStats'              => $nowStats,
+            'cityStats'             => $cityStats,
+            'ageStats'              => $ageStats,
+            'genderStats'           => $genderStats,
+            'eventTypeStats'        => $eventTypeStats,
+            'monthlyStats'          => $monthlyStats,
+            'newUser'               => $newUser,
+            'waitList'              => $waitList,
+            'monthlyWaitList'       => $monthlyWaitList,
+            'current_menu'          => 'dashboard',
+        ]);
+    }
 }
