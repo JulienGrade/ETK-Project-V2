@@ -4,6 +4,7 @@
 namespace App\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\DBAL\Query\QueryBuilder;
 
 class StatsService
 {
@@ -14,6 +15,19 @@ class StatsService
         $this->manager = $manager;
     }
 
+
+    /*
+    // Permet de récupérer la liste des comptes avec le role user
+    public function getUsers(){
+        return $this->createQueryBuilder('u')
+            ->select('firstName', 'lastName')
+            ->from('user_role')
+            ->innerJoin('u', 'user_id','r','role_id')
+            ->where('r.title = \'ROLE_USER\'')
+            ->orederBy('u.createdAt ASC')
+            ->getQuery()
+            ->getResult();
+    }*/
 
     public function getWaitList(){
         return $this->manager->createQuery('SELECT w.comment,w.createdAt,w.id,w.number,e.title,e.startDate,e.slug, u.firstName,u.lastName,u.city,u.phone,u.email,u.createdAt

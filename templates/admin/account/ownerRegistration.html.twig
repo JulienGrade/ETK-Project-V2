@@ -1,0 +1,29 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Création d'un nouveau propriétaire{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Créer un nouveau compte propriétaire</h1>
+        <p>Ce nouvel utilisateur pourra administrer le site, créer, éditer, supprimer</p>
+        {{ form_start(form) }}
+
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.lastName) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.hash) }}
+        {{ form_row(form.passwordConfirm) }}
+
+        {{ form_row(form.city) }}
+        {{ form_row(form.phone) }}
+
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i>
+            Confirmez l'inscritpion du nouveau propriétaire
+        </button>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

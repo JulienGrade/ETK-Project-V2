@@ -103,6 +103,58 @@ class AdminAccountController extends AbstractController
     }
 
     /**
+     * @Route("/admin/register/owner", name="owner_account_register")
+     *
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @param UserPasswordEncoderInterface $encoder
+     * @param StatsService $statsService
+     * @return Response
+     */
+    public function register3(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder,StatsService $statsService)
+    {
+        $stats          = $statsService->getStats();
+        $activeStats    = $statsService->getActiveStats();
+        $nowStats       = $statsService->getNowStats();
+        $cityStats      = $statsService->getCityStats();
+        $ageStats       = $statsService->getAgeStats();
+        $genderStats    = $statsService->getGenderStats();
+
+        $ownerUser = new User();
+
+        $form = $this->createForm(AdminRegistrationType::class, $ownerUser);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $hash = $encoder->encodePassword($ownerUser, $ownerUser->getHash());
+            $ownerUser->setHash($hash);
+
+            $ownerRole  = new Role();
+            $ownerRole  ->setTitle('ROLE_OWNER');
+            $manager    ->persist($ownerRole);
+            $ownerUser->addUserRole($ownerRole);
+
+
+            $manager->persist($ownerUser);
+            $manager->flush();
+
+            return $this->redirectToRoute('admin_dashboard');
+        }
+
+        return $this->render('admin/account/ownerRegistration.html.twig', [
+            'form'=> $form->createView(),
+            'stats'         => $stats,
+            'activeStats'   => $activeStats,
+            'nowStats'      => $nowStats,
+            'cityStats'     => $cityStats,
+            'ageStats'      => $ageStats,
+            'genderStats'   => $genderStats,
+            'current_menu'  => 'setting'
+        ]);
+    }
+
+    /**
      * @Route("/admin/users/{page<\d+>?1}", name="admin_users_list")
      * @param StatsService $statsService
      * @param $page int
@@ -120,6 +172,7 @@ class AdminAccountController extends AbstractController
         $cityStats      = $statsService->getCityStats();
         $ageStats       = $statsService->getAgeStats();
         $genderStats    = $statsService->getGenderStats();
+        //$userList       = $statsService->getUsers();
 
         $repository = $this->getDoctrine()->getRepository(User::class);
         $users = $repository->findAll();

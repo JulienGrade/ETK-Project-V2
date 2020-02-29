@@ -4,6 +4,7 @@
 
 {% block body %}
         <div class="container">
+            {{ dump() }}
             <table class="table mt-5">
                 <thead class="bg-dark">
                 <tr>
@@ -16,8 +17,8 @@
                     <td>Suppression</td>
                 </tr>
                 </thead>
-                {% for user in users %}
-                    <tr>
+                    {% for user in users %}
+
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.email }}</td>
@@ -39,7 +40,8 @@
                             {% endif %}
                         </td>
                     </tr>
-                {% endfor %}
+                    {% endfor %}
+
             </table>
         </div>
     {{ dump() }}
