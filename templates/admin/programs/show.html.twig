@@ -19,8 +19,10 @@
                         <p>{{ program.intro }}</p>
                     </div>
                     <div class="input-group justify-content-around">
+                        {% if is_granted('ROLE_OWNER') %}
                         <a class="btn btn-warning" href="#">Éditer <i class="fas fa-edit"></i></a>
                         <a class="btn btn-danger" href="{{ path('admin_programs_delete', {'id': program.id}) }}">Supprimer <i class="fas fa-trash"></i></a>
+                        {% endif %}
                         <a class="btn btn-primary" href="{{ path('admin_programs_index') }}">Retour à la liste <i class="fas fa-backward"></i></a>
                     </div>
                 </div>

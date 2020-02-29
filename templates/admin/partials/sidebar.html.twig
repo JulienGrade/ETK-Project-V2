@@ -58,7 +58,7 @@
                     <span class="title">Utilisateurs</span>
                 </a>
             </li>
-
+            {% if is_granted('ROLE_OWNER') %}
             <li class="menu-item {% if current_menu is defined and current_menu == 'createevent' or current_menu == 'createprogram' %}active{% endif %} dropdown">
                 <span class="menu-link title" data-toggle="dropdown"><i class="fas fa-plus-circle"></i>Créer</span>
                 <div class="dropdown-menu dropdown-menu">
@@ -67,7 +67,7 @@
                     <a class="dropdown-item" href="{{ path('admin_programs_create') }}">Programme</a>
                 </div>
             </li>
-
+            {% endif %}
             <li class="menu-item">
                 <a class="menu-link" href="{{ path('admin_account_logout') }}">
                     <span class="icon"><i class="fas fa-sign-out-alt"></i></span>

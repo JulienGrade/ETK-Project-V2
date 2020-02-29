@@ -98,6 +98,7 @@ class AdminAccountController extends AbstractController
             'cityStats'     => $cityStats,
             'ageStats'      => $ageStats,
             'genderStats'   => $genderStats,
+            'current_menu'  => 'setting'
         ]);
     }
 

@@ -314,7 +314,7 @@ class StatsService
             FROM App\Entity\children c
             JOIN c.booking b
             JOIN b.booker u
-            WHERE u.city = \'Autre\'
+            WHERE u.city != \'Lille\' AND u.city != \'Lommes\' AND u.city != \'Hellemmes\'
             '
         )->getScalarResult();
     }

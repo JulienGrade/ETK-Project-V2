@@ -23,12 +23,14 @@
                     <td>
                         <a class="btn btn-primary" href="{{ path('admin_programs_show', {'slug': program.slug}) }}">Détails <i class="fas fa-info-circle"></i></a>
                     </td>
+                    {% if is_granted('ROLE_OWNER') %}
                     <td>
                         <a class="btn btn-warning" href="#">Éditer <i class="fas fa-edit"></i></a>
                     </td>
                     <td>
                         <a class="btn btn-danger" href="{{ path('admin_programs_delete', {'id': program.id}) }}">Supprimer <i class="fas fa-trash"></i></a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </table>

@@ -50,7 +50,7 @@ class AdminBookingController extends AbstractController
     /**
      * Permet a l'admin d'afficher une réservation
      *
-     * @Route("/admin/reservations/{id}", name="admin_bookings_show")
+     * @Route("/admin/reservation/{id}", name="admin_bookings_show")
      *
      * @param Booking $booking
      * @param StatsService $statsService

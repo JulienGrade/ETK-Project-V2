@@ -25,6 +25,7 @@
                         <td>{{ user.city }}</td>
                         <td>{{ user.createdAt | date('d/m/Y') }}</td>
                         <td>
+                            {% if is_granted('ROLE_OWNER') %}
                             {#                    <form action="{{ path('admin_users_delete', {'id': user.id }) }}" method="post">#}
                             {#                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}">#}
                             {#                        <button> supprimer </button>#}
@@ -35,6 +36,7 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
                                 <button class="btn btn-danger"> supprimer </button>
                             </form>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

@@ -37,10 +37,12 @@
                                 <td>{{ userWait.number }}</td>
                                 <td>{{ userWait.createdAt | date('d/m/Y') }}</td>
                                 <td>
+                                    {% if is_granted('ROLE_OWNER') %}
                                     <a href="{{ path('admin_waitlist_delete', {'id': userWait.id }) }}" class="btn btn-danger">
                                         Supprimer
                                         <i class="fas fa-trash"></i>
                                     </a>
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}

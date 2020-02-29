@@ -26,14 +26,29 @@ class AppFixtures extends Fixture
         $faker      = Factory::create('Fr-fr');
 
         // Ici on gère les Roles
+
+        $ownerRole = new Role();
+        $ownerRole ->setTitle('ROLE_OWNER');
+        $manager->persist($ownerRole);
+
+        $ownerUser = new User();
+        $ownerUser ->setFirstName('Euratech')
+            ->setLastName('Admin')
+            ->setEmail('euratech@gmail.com')
+            ->setHash($this->encoder->encodePassword($ownerUser,'password'))
+            ->setCity('Lille')
+            ->setPhone($faker->phoneNumber)
+            ->addUserRole($ownerRole);
+        $manager->persist($ownerUser);
+
         $adminRole  = new Role();
         $adminRole  ->setTitle('ROLE_ADMIN');
         $manager    ->persist($adminRole);
 
         $adminUser = new User();
-        $adminUser  ->setFirstName('Euratech')
-                    ->setLastName('Admin')
-                    ->setEmail('euratech@gmail.com')
+        $adminUser  ->setFirstName('Julien')
+                    ->setLastName('Grade')
+                    ->setEmail('gradejulien@gmail.com')
                     ->setHash($this->encoder->encodePassword($adminUser,'password'))
                     ->setCity($faker->city)
                     ->setPhone($faker->phoneNumber)
