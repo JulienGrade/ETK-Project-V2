@@ -1,0 +1,51 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Gestion des comptes admin{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-3">Gestion des comptes administrateurs"</h1>
+        <table class="table mt-5">
+            <thead class="bg-dark">
+            <tr>
+                <td>Prénom</td>
+                <td>Nom</td>
+                <td>Email</td>
+                <td>Téléphone</td>
+                <td>Ville</td>
+                <td>Inscrit depuis</td>
+                <td>Suppression</td>
+            </tr>
+            </thead>
+            {% for user in adminUsers %}
+
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.createdAt | date('d/m/Y') }}</td>
+                <td>
+                    {% if is_granted('ROLE_OWNER') %}
+                        {#                    <form action="{{ path('admin_users_delete', {'id': user.id }) }}" method="post">#}
+                        {#                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}">#}
+                        {#                        <button> supprimer </button>#}
+                        {#                    </form>#}
+
+                        <form method="post" action="{{ path('admin_users_delete', {'id': user.id}) }}"
+                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                            <button class="btn btn-danger"> supprimer </button>
+                        </form>
+                    {% endif %}
+                </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+    <div class="text-right">
+        <button type="button" class="btn btn-secondary mr-5" onclick="javascript:window.print();">Print</button>
+    </div>
+    {{ pagination.display() }}
+{% endblock %}

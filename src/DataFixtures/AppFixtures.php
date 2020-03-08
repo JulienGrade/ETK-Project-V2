@@ -61,6 +61,11 @@ class AppFixtures extends Fixture
         $genres = ['male', 'female'];
 
         for($i = 1; $i <= 10; $i ++){
+
+            $userRole  = new Role();
+            $userRole  ->setTitle('ROLE_USER');
+            $manager    ->persist($userRole);
+
             $user   = new User();
 
             $genre  = $faker->randomElement($genres);
@@ -72,7 +77,8 @@ class AppFixtures extends Fixture
                     ->setEmail($faker->email)
                     ->setHash($hash)
                     ->setCity($faker->city)
-                    ->setPhone($faker->phoneNumber);
+                    ->setPhone($faker->phoneNumber)
+                    ->addUserRole($userRole);
 
             $manager->persist($user);
 

@@ -11,6 +11,7 @@ use App\Service\PaginationService;
 use App\Service\StatsService;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\DBAL\Query\QueryBuilder;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -173,6 +174,7 @@ class AdminAccountController extends AbstractController
         $cityStats      = $statsService->getCityStats();
         $ageStats       = $statsService->getAgeStats();
         $genderStats    = $statsService->getGenderStats();
+        $allUsers       = $statsService->getAllUsers();
 
 
         $repository = $this->getDoctrine()->getRepository(User::class);
@@ -189,6 +191,47 @@ class AdminAccountController extends AbstractController
             'genderStats'   => $genderStats,
             'current_menu'  => 'userList',
             'pagination'    => $pagination,
+            'allUsers'      => $allUsers,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/owner/{page<\d+>?1}", name="admin_owner_list")
+     * @IsGranted("ROLE_OWNER")
+     * @param StatsService $statsService
+     * @param $page int
+     * @param PaginationService $pagination
+     * @return Response
+     */
+    public function listAdmin(StatsService $statsService, $page, PaginationService $pagination)
+    {
+        $pagination ->setEntityClass(User::class)
+            ->setPage($page);
+
+        $stats          = $statsService->getStats();
+        $activeStats    = $statsService->getActiveStats();
+        $nowStats       = $statsService->getNowStats();
+        $cityStats      = $statsService->getCityStats();
+        $ageStats       = $statsService->getAgeStats();
+        $genderStats    = $statsService->getGenderStats();
+        $adminUsers       = $statsService->getAdminUsers();
+
+
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $users = $repository->findAll();
+
+
+        return $this->render('admin/account/adminOwnerList.html.twig', [
+            'users'         => $users,
+            'stats'         => $stats,
+            'activeStats'   => $activeStats,
+            'nowStats'      => $nowStats,
+            'cityStats'     => $cityStats,
+            'ageStats'      => $ageStats,
+            'genderStats'   => $genderStats,
+            'current_menu'  => 'userList',
+            'pagination'    => $pagination,
+            'adminUsers'      => $adminUsers,
         ]);
     }
 

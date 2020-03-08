@@ -4,7 +4,7 @@
 namespace App\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\ORM\QueryBuilder;
 
 class StatsService
 {
@@ -15,19 +15,21 @@ class StatsService
         $this->manager = $manager;
     }
 
+    public function getAllUsers(){
+        return $this->manager->CreateQuery('SELECT u.firstName, u.lastName, u.email, u.phone, u.city, u.createdAt, u.id, ur.title
+        FROM App\Entity\User u
+        JOIN u.userRoles ur
+        WHERE ur.title != \'ROLE_ADMIN\' AND ur.title != \'ROLE_OWNER\'
+        ')->getResult();
+    }
 
-    /*
-    // Permet de récupérer la liste des comptes avec le role user
-    public function getUsers(){
-        return $this->createQueryBuilder('u')
-            ->select('firstName', 'lastName')
-            ->from('user_role')
-            ->innerJoin('u', 'user_id','r','role_id')
-            ->where('r.title = \'ROLE_USER\'')
-            ->orederBy('u.createdAt ASC')
-            ->getQuery()
-            ->getResult();
-    }*/
+    public function getAdminUsers(){
+        return $this->manager->CreateQuery('SELECT u.firstName, u.lastName, u.email, u.phone, u.city, u.createdAt, u.id, ur.title
+        FROM App\Entity\User u
+        JOIN u.userRoles ur
+        WHERE ur.title != \'ROLE_USER\'
+        ')->getResult();
+    }
 
     public function getWaitList(){
         return $this->manager->createQuery('SELECT w.comment,w.createdAt,w.id,w.number,e.title,e.startDate,e.slug, u.firstName,u.lastName,u.city,u.phone,u.email,u.createdAt

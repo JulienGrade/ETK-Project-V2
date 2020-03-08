@@ -4,7 +4,7 @@
 
 {% block body %}
         <div class="container">
-            {{ dump() }}
+            <h1 class="text-center mt-3">Gestion des utilisateurs</h1>
             <table class="table mt-5">
                 <thead class="bg-dark">
                 <tr>
@@ -17,7 +17,7 @@
                     <td>Suppression</td>
                 </tr>
                 </thead>
-                    {% for user in users %}
+                    {% for user in allUsers %}
 
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.lastName }}</td>
@@ -44,7 +44,6 @@
 
             </table>
         </div>
-    {{ dump() }}
     <div class="text-right">
         <button type="button" class="btn btn-secondary" onclick="javascript:window.print();">Print</button>
     </div>
