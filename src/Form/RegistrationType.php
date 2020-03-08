@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -29,6 +30,8 @@ class RegistrationType extends ApplicationType
                 $this->getConfiguration("Ville", "Votre ville..."))
             ->add('phone', TelType::class,
                 $this->getConfiguration("Téléphone", "Votre numéro de téléphone"))
+            ->add('cgu', CheckboxType::class,
+                $this->getConfiguration("Acceptez les conditions générales de ventes","Cochez"))
         ;
     }
 

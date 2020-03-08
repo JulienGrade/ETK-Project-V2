@@ -10,6 +10,7 @@ use App\Form\RegistrationType;
 use App\Service\PaginationService;
 use App\Service\StatsService;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -172,10 +173,11 @@ class AdminAccountController extends AbstractController
         $cityStats      = $statsService->getCityStats();
         $ageStats       = $statsService->getAgeStats();
         $genderStats    = $statsService->getGenderStats();
-        //$userList       = $statsService->getUsers();
+
 
         $repository = $this->getDoctrine()->getRepository(User::class);
         $users = $repository->findAll();
+
 
         return $this->render('admin/account/adminList.html.twig', [
             'users'         => $users,

@@ -141,6 +141,8 @@ class User implements UserInterface
      */
     private $waitLists;
 
+    private $cgu;
+
 
     public function __construct()
     {
@@ -444,6 +446,22 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCgu()
+    {
+        return $this->cgu;
+    }
+
+    /**
+     * @param mixed $cgu
+     */
+    public function setCgu($cgu)
+    {
+        $this->cgu = $cgu;
     }
 
 }

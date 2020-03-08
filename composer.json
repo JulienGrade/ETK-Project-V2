@@ -8,6 +8,7 @@
         "cocur/slugify": "^4.0",
         "drewm/mailchimp-api": "^2.5",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
+        "google/recaptcha": "~1.2",
         "knpuniversity/oauth2-client-bundle": "^1.33",
         "league/oauth2-google": "^3.0",
         "sensio/framework-extra-bundle": "^5.1",

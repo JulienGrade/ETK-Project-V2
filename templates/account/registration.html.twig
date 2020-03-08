@@ -104,6 +104,10 @@
                     <button class="login100-form-btn">
                         Inscription
                     </button>
+                    {{ form_widget(form.cgu, {'attr': {'class': 'mx-2 mt-2'}}) }}
+                    <div class="form-error">
+                        {{ form_errors(form.cgu, {'attr':{'data-validate':'!'}}) }}
+                    </div>
                 </div>
 
                 {{ form_end(form) }}
