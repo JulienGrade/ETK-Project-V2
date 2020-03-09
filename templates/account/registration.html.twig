@@ -105,6 +105,7 @@
                         Inscription
                     </button>
                     {{ form_widget(form.cgu, {'attr': {'class': 'mx-2 mt-2'}}) }}
+                    <a href="{{ path('cgu') }}">Voir les conditions générales de vente</a>
                     <div class="form-error">
                         {{ form_errors(form.cgu, {'attr':{'data-validate':'!'}}) }}
                     </div>
